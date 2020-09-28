@@ -1,9 +1,9 @@
 var iFileName = "Interception.js";
 RequiredSheetVersion(12.999);
 
-SourceList["UA:CF"] = {
-	name : "Unearthed Arcana: Class Features",
-	abbreviation : "UA:CF",
+SourceList["UA:CFV"] = {
+	name : "Unearthed Arcana: Class Feature Variants",
+	abbreviation : "UA:CFV",
 	group : "Unearthed Arcana",
 	url : "https://https://media.wizards.com/2019/dnd/downloads/UA-ClassFeatures.pdf",
 	date : "2019/11/04"

@@ -1,0 +1,299 @@
+/*	-WHAT IS THIS?-
+	This file adds optional material to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+
+/*	-INFORMATION-
+	Subject:	Class
+	Effect:		This script adds a homebrew gunslinger class that takes inspiration and mechanics from a combination of the DandWiki Gunslinger and Mathew Mercer's Gunslinger Subclass for the fighter
+				In a few places script was borrowed from the gunslinger subclass on MPMB's github: https://github.com/morepurplemorebetter/MPMBs-Character-Record-Sheet/blob/master/additional%20content/Subclasses/Fighter%20-%20Gunslinger%20v1.3%20%5BMatthew%20Mercer's%20work%2C%20transcribed%20by%20many%5D.js
+				Matthew Mercer on DMs Guild: https://www.dmsguild.com/browse.php?x=0&y=0&author=Matthew%20Mercer
+				Hombrew Gunslinger Class on DandWiki: https://www.dandwiki.com/wiki/Gunslinger_(5e_Class)
+	Code by:	Thravieus Windhelm 
+	Date: 2020-10-21 (sheet v13.00.00)
+*/
+
+var iFileName = "Gunslinger Class.js"; 
+RequiredSheetVersion(13); 
+
+ClassList["gunslinger"] = { 
+
+	regExpSearch : /^(?=.*gun)(?=.*slinger).*$/i,
+
+	name : "Gunslinger", 
+
+	source : ["HB", 0], 
+
+	primaryAbility : "\n \u2022 Gunslinger: Dexterity;", 
+
+	prereqs : "\n \u2022 Gunslinger: Dexterity 13;", 
+
+	die : 8, 
+
+	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5], 
+
+	saves : ["Dex", "Wis"], 
+
+	skills : ["\n\n" + toUni("Gunslinger") + ": Choose two from Acrobatics, Athletics, History, Insight, Perception, Sleight of Hand, Stealth, and Survival.", "\n\n" + toUni("Gunslinger") + ": Choose one from Athletics, Insight, Perception, and Survival."], 
+
+	toolProfs : { 
+		primary : [["Tinker's tools", "Int"]], 
+	},
+
+	armor : [ 
+		[true, true, false, false], 
+		[true, true, false, false] 
+	],
+
+	weapons : [ 
+		[true, true, ["firearms"]], 
+		[true, false, ["firearms"]] 
+	],
+
+	equipment : "Gunslinger starting equipment:\n \u2022 Hide armor -or- leather armor;\n \u2022 A light crossbow and 20 bolts -or- any two simple weapons;\n \u2022 A dungeoneer's pack -or- an explorer's pack;\n \u2022 A pistol, 12 bullets, and Tinker's tools;\n\nAlternatively, choose 5d4 \xD10 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.", 
+
+	subclasses : ["Gunslinger Bravado", []], 
+
+	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 
+
+	abilitySave : 5, 
+
+	features : { 
+		"firearm expertise" : {
+			name: "Firearm Expertise",
+			source : ["HB", 0],
+			minlevel : 1,
+			description : "\n   " + "I gain a +2 bonus to attack rolls I make with firearms",
+			calcChanges : {
+				atkCalc : [
+					function (fields, v, output) {
+						if ((/firearm/i).test(v.theWea.type)) { 
+							output.extraHit += 2;
+						}
+					},
+					"My firearm weapons get a +2 bonus on the To Hit."
+				]
+			}
+		},
+
+		"weapon forging" : {
+			name : "Weapon Forging",
+			minlevel : 1,
+			source : ["HB", 0],
+			description : "\n   " + "I can use Tinker's Tools to craft firearms",
+		},
+
+		"grit of a warrior" : {
+			name : "Grit of a Warrior",
+			source : ["HB", 0],
+			minlevel : 2,
+			description : "\n   " + "I gain grit points which I can spend to perform various Trick Shots with my firearms" + "\n   " + "I regain 1 spent grit point when I roll a 20 on a firearm attack or score a killing blow",
+			recovery : "short rest",
+			usages : "Wisdom modifier per ",
+			usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+		},
+
+		"adept marksman" : {
+			name: "Adept Marksman",
+			source: ["HB", 0],
+			minlevel : 2,
+			description : "\n   " + "Use the \"Choose Feature\" button above to add Trick Shots to the third page"+ "\n   " + "Whenever I make a firearm attack, I may use one trick shot with that attack" + "\n   " + "Whenever I gain a gunslinger level, I can replace a trick shot I know with another",
+			additional : levels.map(function (n) {
+				return n < 2 ? "" : (n < 7 ? 2 : n < 10 ? 3 : n < 15 ? 4 : n < 18 ? 5 : 6) + " trick shots known";
+			}),
+			extraname : "Trick Shot",
+			extrachoices : ["Bullying Shot", "Dazing Shot", "Deadeye Shot", "Disarming Shot", "Forceful Shot", "Piercing Shot", "Violent Shot", "Winging Shot"],
+			extraTimes : levels.map(function (n) {
+					return n < 2 ? 0 : n < 7 ? 2 : n < 10 ? 3 : n < 15 ? 4 : n < 18 ? 5 : 6;
+			}),
+			"bullying shot" : {
+				name : "Bullying Shot",
+				additional : "1 grit point",
+				description : "\n   " + "The target of my firearm attack must make a Charisma saving throw" + "\n   " + "On a failed save the creature is frightened until the end of their next turn",
+			},
+			"dazing shot" : {
+				name : "Dazing Shot",
+				additional : "1 grit point",
+				description : "\n   " + "The target of my firearm attack must make a Constitution saving throw" + "\n   " + "On a failed save the creature has disadvantage on attack rolls until the end of their next turn",
+			},
+			"deadeye shot" : {
+				name : "Deadeye Shot",
+				additional : "1 grit point",
+				description : "\n   " + "I gain advantage on my firearm attack roll",
+			},
+			"disarming shot" : {
+				name : "Disarming Shot",
+				additional : "1 grit point",
+				description : "\n   " + "The target of my firearm attack must make a Strength saving throw" + "\n   " + "On a failed save one object the creature holds is dropped and pushed 10 ft away from me",
+			},
+			"forceful shot" : {
+				name : "Forceful Shot",
+				additional : "1 grit point",
+				description : "\n   " + "The target of my firearm attack must make a Strength saving throw" + "\n   " + "On a fail the creature is pushed 15 ft away from me",
+			},
+			"piercing shot" : {
+				name : "Piercing Shot",
+				additional : "1 grit point",
+				description : "\n   " + "I can attack each creature within a 15 ft line behind my target" + "\n   " + "I make an additional attack roll with disadvantage for each creature in the range" + "\n   " + "Increase the misfire of the initial attack by one, you cannot misfire on the additional attacks",
+			},
+			"violent shot" : {
+				name : "Violent Shot",
+				additional : "1 or more grit points",
+				description : "\n   " + "I can deal extra damage on my attack, rolling one additional damage die per grit point used" + "\n   " + "Increase the misfire of the attack by two for each grit point expended this way",
+			},
+			"winging shot" : {
+				name : "Winging Shot",
+				additional : "1 grit point",
+				description : "\n   " + "The target of my firearm attack must make a Strength saving throw" + "\n   " + "On a fail the creature is knocked prone",
+			}
+		},
+		
+		"quick draw" : {
+			name : "Quick Draw",
+			source : ["HB", 0],
+			minlevel : 2,
+			description : "\n   " + "I can stow a firearm and draw another as a single object interaction on my turn" + "\n   " + "I add a +1 bonus to my initiative rolls",
+			addMod : {type: "skill", field: "Init", mod: 1, text: "I add a +1 bonus to my initiative rolls."
+			}
+		},
+		
+		"subclassfeature3" : {
+			name : "Gunslinger Bravado",
+			source : ["HB", 0],
+			minlevel : 3,
+			description : "\n   " + "Choose an archetype that you strive to emulate and put it in the \"Class\" field"
+		},
+	
+		"quick movement" : {
+			name : "Quick Movement",
+			source : ["HB", 0],
+			minlevel : 6,
+			description : "\n   " + "I gain +10 ft speed when I'm not wearing heavy armor" + "\n   " + "I can take the Disengage action as a bonus action",
+			speed : { allModes : "+10" }
+		},
+		
+		"evasion" : {
+			name : "Evasion",
+			source : ["HB", 0],
+			minlevel : 9,
+			description : "\n   " + "My Dexterity saves vs. areas of effect negate damage on success and halve it on failure",
+			savetxt : { text : ["Dex save vs. area effects: fail \u2015 half dmg, success \u2015 no dmg"] }
+		},
+
+		"lightning reload" : {
+			name : "Lightning Reload",
+			source : ["HB", 0],
+			minlevel : 10,
+			description : "\n   " + "I can reload any firearm as a bonus action",
+			action : ["bonus action", ""]
+		},
+
+		"tools of the trade" : {
+			name : "Tools of the Trade",
+			source : ["HB", 0],
+			minlevel : 14,
+			description : "\n   " + "One weapon that I customize deals additional damage based on my level",
+			additional : levels.map(function(n) {
+				return n < 14 ? "" : (n < 17 ? "1d8" : n < 20 ? "1d10" : "1d12") + " extra damage";
+			}),
+			calcChanges : {
+				atkAdd : [
+					function (fields, v) {
+						if ((/firearm/i).test(v.theWea.type) && classes.known.gunslinger && classes.known.gunslinger.level > 13 && (/\bcustom\b/i).test(v.WeaponText)) fields.Description += (fields.Description ? "; " : " ") + (classes.known.gunslinger.level < 17 ? "+1d8" : classes.known.gunslinger.level < 20 ? "+1d10" : "+1d12") + " extra damage"
+						},
+					"If I include the word 'Custom' in the name of a firearm weapon, it will be treated as my tools of the trade weapon, increasing the damage."
+				]
+			}
+		},
+
+		"feral senses" : {
+			name : "Feral Senses",
+			source : ["HB", 0],
+			minlevel : 17,
+			description : "\n   " + "I no longer have disadvantage when attacking enemies I can't see",
+			additional : "Blindsight 30ft",
+			vision : [["Blindsight", 30]]
+		},
+	}
+};
+
+
+AddSubClass("gunslinger", "desperado", {
+	regExpSearch : /^(?=.*desperado)(?=.*(gun|slinger|outlaw|bandit)).*$/i,
+	subname : "Desperado",
+	source : ["HB", 0],
+	features : {
+		"subclassfeature3" : {
+			name : "Two-Gun Fighting Style",
+			source : ["HB", 0],
+			minlevel : 3,
+			description : "\n   " + "I can use two-weapon fighting with firearms I'm wielding even when they aren't light",
+		},
+		
+		"subclassfeature3.1" : {
+			name : "Mark for Death",
+			source : ["HB", 0],
+			minlevel : 3,
+			description : "\n   " + "I can mark my quarry as a bonus action, I have advantage on firearm attacks against them" + "\n   " + "The mark lasts for 1 minute or until I attack another target",
+			action : ["bonus action", ""],
+			usages : "Wisdom modifier per ",
+			usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+			recovery : levels.map(function (n) {
+					return n < 13 ? "long rest" : "short rest";
+			}),
+		},
+
+		"subclassfeature7" : {
+			name : "Rapid Repair",
+			source : ["HB", 0],
+			minlevel : 7,
+			description : "\n   " + "As a bonus action, I can repair a misfired (not broken) firearm by spending 1 grit point",
+			additional : "1 grit point",
+			action : ["bonus action", " (1 grit point)"],
+		},
+
+		"subclassfeature13" : {
+			name : "Interrupting Shot",
+			source : ["HB", 0],
+			minlevel : 13,
+			description : "\n   " + "I can use my reaction to make a firearm attack against my mark when they attack" + "\n   " + "I also regain Mark of Death uses after a short rest",
+			action : ["reaction", ""],
+		},
+
+		"subclassfeature15" : {
+			name : "Fearless",
+			source : ["HB", 0],
+			minlevel : 15,
+			additional : "Immune to being frightened",
+			savetxt : { immune : ["frightened"] },
+		},
+
+		"subclassfeature18" : {
+			name : "Sharp Eyes",
+			source : ["HB", 0],
+			minlevel : 18,
+			description : "\n   " + "I score a critical hit with my weapon attacks on a roll of 19 and 20" + "\n   " + "I regain a grit point on a roll of 19 or 20 on a firearm attack roll",
+			calcChanges : {
+				atkAdd : [
+					function (fields, v) {
+						if ((/firearm/i).test(v.theWea.type) && !v.CritChance && classes.known.gunslinger && classes.known.gunslinger.level > 17) {
+							fields.Description += (fields.Description ? '; ' : '') + 'Crit on 19-20';
+							v.CritChance = 19;
+						};
+					},
+					"My attacks with firearms score a critical on a to hit roll of both 19 and 20."
+				]
+			}
+		},
+
+		"subclassfeature20" : {
+			name : "Kill in the Blink of an Eye",
+			source : ["HB", 0],
+			minlevel : 20,
+			description : "\n   " + "When you roll initiative, as long as you aren't surprised, you may take an Attack action" + "\n   " + "You may only attack with firearm weapons, and no reactions may be taken in response"
+		}
+	}
+})
+

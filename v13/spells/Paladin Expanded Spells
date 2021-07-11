@@ -9,7 +9,7 @@
 	Subject:	Spells
 	Effect:		This script adds homebrew spells for the paladin class compiled from various sources on dmsguild.com and drivethrurpg.com. 
 	Code by:	PoetOfGod
-	Date: 2020-10-21 (sheet v13.00.00)
+	Date: 2019-10-21 (sheet v13.00.00)
 */
 
 var iFileName = "DMGuild Paladin Spells.js";

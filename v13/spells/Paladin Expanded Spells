@@ -1,0 +1,1154 @@
+/*	-WHAT IS THIS?-
+	This file adds optional material to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+
+/*	-INFORMATION-
+	Subject:	Spells
+	Effect:		This script adds homebrew spells for the paladin class compiled from various sources on dmsguild.com and drivethrurpg.com. 
+	Code by:	PoetOfGod
+	Date: 2019-10-21 (sheet v13.00.00)
+*/
+
+var iFileName = "DMGuild Paladin Spells.js";
+RequiredSheetVersion(13);
+
+SourceList["101:1LS"] = { 
+	name : "101 1st Level Spells",
+	abbreviation : "101:1LS",
+	group : "Dungeon Masters Guild",
+	url : "https://www.drivethrurpg.com/product/155298/101-1st-Level-Spells-5E",
+	date : "2015/08/23",
+};
+
+SourceList["DG:NPSS"] = { 
+	name : "Divine Gifts: New Paladin Specific Spells",
+	abbreviation : "DS:NPSS",
+	group : "Dungeon Masters Guild",
+	url : "https://www.drivethrurpg.com/product/296411/Divine-Gifts-New-PaladinSpecific-Spells",
+	date : "2019/12/01",
+};
+
+SourceList["AWS"] = { 
+	name : "Arcane Warrior Spells",
+	abbreviation : "AWS",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/171090/Arcane-Warrior-Spells-5e",
+	date : "2016/02/17",
+};
+
+SourceList["TBBo1000S"] = { 
+	name : "The Blackstaff's Book of 1000 Spells",
+	abbreviation : "TBBo1000S",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/302120/The-Blackstaffs-Book-of-1000-Spells",
+	date : "2020/02/01",
+};
+
+SourceList["OoES"] = { 
+	name : "Opus of Extrinsic Substance",
+	abbreviation : "OoES",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/295660/Opus-of-Extrinsic-Substance--60-Otherworldly-Spells",
+	date : "2019/11/23",
+};
+
+SourceList["EFAA"] = { 
+	name : "Encyclopaedia Formulae Arcana A",
+	abbreviation : "EFAA",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/266058/Encyclopaedia-Formulae-Arcana--A",
+	date : "2019/02/12",
+};
+
+SourceList["EFAB"] = { 
+	name : "Encyclopaedia Formulae Arcana B",
+	abbreviation : "EFAB",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/270368",
+	date : "2019/03/20",
+};
+
+SourceList["EFAD"] = { 
+	name : "Encyclopaedia Formulae Arcana D",
+	abbreviation : "EFAD",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/292431/Encyclopaedia-Formulae-Arcana--D?affiliate_rem=1549348",
+	date : "2019/10/22",
+};
+
+//Spells from 101 1st Level Spells:
+
+SpellsList["clarity of the faith"] = {
+	name : "Clarity of the Faith",
+	classes : ["cleric", "druid", "paladin"],
+	source : ["101:1LS", 8],
+	level : 1,
+	school : "Div",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "1 min",
+	description : "Gives the target a +5 bonus to Religion checks regarding your faith",
+	descriptionFull: "The target gains a comprehensive understanding of the tenets of your faith, granting a +5 competence bonus to Religion checks relating to questions of your faith." + "\n   " + "Even after the spell fades, the target remains as familiar with your religion as if she had actually read its holy book or the equivalent repository of dogma and lore (make untrained checks of DC 15 or lower for one month)."
+};
+
+SpellsList["divine beacon"] = {
+	name : "Divine Beacon",
+	classes : ["cleric", "paladin"],
+	source : ["101:1LS", 10],
+	level : 1,
+	school : "Abjur",
+	time : "1 a",
+	range : "1 mil",
+	components : "V",
+	duration : "1 h (D)",
+	description : "Individual or group knows direction, range, and condition of the caster",
+	descriptionFull: "The caster designates a recipient of this beacon: a specific individual, a member of specific race, class, or organization." + "\n   " + "If the individual or group is within the range of the spell they know any negative conditions to which the caster is subjected and the direction and range to the caster."
+};
+
+SpellsList["draw on faith"] = {
+	name : "Draw on Faith",
+	classes : ["cleric", "paladin"],
+	source : ["101:1LS", 11],
+	level : 1,
+	school : "Conj",
+	time : "1 a",
+	range : "Self",
+	components : "V,S",
+	duration : "1 min",
+	description : "Gain a +1 bonus on one save, check, or attack roll; +1 at CL 5, 9, 13, and 17",
+	descriptionFull: "Upon casting this spell, you receive a surge of divine energy that grants you a +1 bonus on any one attack roll, saving throw, or check you make in the next minute. You must decide if you will use the bonus before you make the die roll." + "\n   " + "For every 4 caster levels beyond 1st, you get an extra +1 bonus (+2 at 5th level, etc.) to a maximum of +5 at 17th level."
+};
+
+SpellsList["illuminated weapon"] = {
+	name : "Illuminated Weapon",
+	classes : ["paladin"],
+	source : ["101:1LS", 14],
+	level : 1,
+	school : "Evoc",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	save : "Con",
+	description : "Save to resist -2 penalty to attacks, saves, and checks to undead struck",
+	descriptionFull: "You make a weapon particularly useful against undead opponents by infusing it with magical daylight. The weapon disrupts the undead flesh of a corporeal foe on a failed Constitution Save, inflicting upon it a –2 penalty to attacks, saves, and checks for 1 round when it strikes (multiple strikes do not inflict stacking penalties.)" + "\n   " + "Incorporeal undead hit are also disrupted, causing them to be staggered on their next turn."
+};
+
+
+SpellsList["potent weapon"] = {
+	name : "Potent Weapon",
+	classes : ["cleric", "paladin", "ranger"],
+	source : ["101:1LS", 17],
+	level : 1,
+	school : "Trans",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "Weapon gains +1 to hit, 1d6 dmg against a chosen crea type",
+	descriptionFull: "When you cast this spell, you designate a foe by creature type and imbue a weapon you touch with the power to deal additional damage to that foe. The weapon gains a +1 bonus to attack rolls against the designated foe and deals an additional 1d6 points of damage when it hits those foes."
+};
+
+SpellsList["righteous strike"] = {
+	name : "Righteous Strike",
+	classes : ["paladin"],
+	source : ["101:1LS", 18],
+	level : 1,
+	school : "Evoc",
+	time : "1 bns",
+	range : "Touch",
+	components : "V,S",
+	duration : "1 h",
+	description : "You gain a +1 to atk and dmg and bypass damage reduction on a single strike",
+	descriptionFull: "This spell allows you to channel your holy power into a weapon. The weapon gains a +1 bonus to attack and damage, and is able to bypass all forms of damage resistance and reduction for 1 attack."
+};
+
+SpellsList["share sacrifice"] = {
+	name : "Share Sacrifice",
+	classes : ["paladin"],
+	source : ["101:1LS", 19],
+	level : 1,
+	school : "Trans",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "You heal half a creature's hit points and take half of that amount as Necrotic damage",
+	descriptionFull: "When you touch a willing target and speak the appropriate prayer, the target heals half the current hit point damage it has suffered. Half of the amount of damage healed is dealt to you as necrotic damage."
+};
+
+SpellsList["soul beacon"] = {
+	name : "Soul Beacon",
+	classes : ["paladin"],
+	source : ["101:1LS", 19],
+	level : 1,
+	school : "Necro",
+	time : "1 a",
+	range : "Self",
+	components : "V",
+	duration : "1 min",
+	description : "You gain +2 to AC and saves against undead but are extremely visible to undead",
+	descriptionFull: "You amplify all positive and good aspects of your soul, giving you power to resist the attacks of undead creatures. You gain a +2 bonus to Armor Class and saves against undead attacks." + "\n   " + "You become visible to undead creatures even in darkness (non magical)."
+};
+
+//Spells from Divine Gifts: New Paladin Specific Spells:
+
+SpellsList["shield of the martyr"] = {
+	name : "Shield of the Martyr",
+	classes : ["paladin"],
+	source : ["DG:NPSS", 1],
+	level : 1,
+	school : "Abjur",
+	time : "1 rea",
+	range : "60 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "If crea within 60 ft takes dmg, you take dmg instead",
+	descriptionFull : "Your god answers your call to protect your ally, allowing you to take their wounds as your own. When a creature that you can see within 60 feet of you takes damage from any source, you may instead take the damage as though it were dealt directly to you."
+};
+
+SpellsList["crystalline strike"] = {
+	name : "Crystalline Strike",
+	classes : ["paladin"],
+	source : ["DG:NPSS", 1],
+	level : 2,
+	school : "Conj",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Conc, 1 min",
+	save : "Dex",
+	description : "Next melee weapon hit +2d6+1d6/SL Cold dmg 5ft range; save halves",
+	descriptionFull : "Your weapon tears through the heavens, conjuring shards of icy crystals in its wake. The next time you hit a creature with a weapon attack before this spell ends, the target and each creature within 5 feet of it must succeed on a Dexterity saving throw or take an additional 2d6 cold damage." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, the extra damage increases by 1d6 for each slot level above 2nd."
+};
+
+SpellsList["aura of wrath"] = {
+	name : "Aura of Wrath",
+	classes : ["paladin"],
+	source : ["DG:NPSS", 1],
+	level : 3,
+	school : "Evoc",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "All friendly crea in range reroll hits of 1 or 2 for duration",
+	descriptionFull : "You call upon your god’s power, righteous fury radiating from you in an aura with a 30-foot radius. Until the spell ends, the aura moves with you, centered on you. Each nonhostile creature in the aura (including you), may reroll weapon damage dice when they roll a 1 or a 2. If they reroll, they must use the new roll, even if the new roll is a 1 or a 2."
+};
+
+SpellsList["divine scourge"] = {
+	name : "Divine Scourge",
+	classes : ["paladin"],
+	source : ["DG:NPSS", 2],
+	level : 4,
+	school : "Evoc",
+	time : "1 a",
+	range : "30 ft",
+	components : "V",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "Chosen creas in range take 7d6 Poison dmg, save halves or also poisoned and blinded",
+	descriptionFull : "You strike the ground, bringing the pestilent judgment of your god along with it. Each creature you choose within 30 feet of you must succeed on a Constitution saving throw or take 7d6 poison damage, and be poisoned and blinded. A creature that succeeds on its saving throw takes half as much damage and isn't poisoned or blinded." + "\n   " + "Creatures who are poisoned and blinded may make an additional Constitution saving throw at the end of each of their turns. On a success, the spell ends on the target."
+};
+
+
+SpellsList["aura of resilience"] = {
+	name : "Aura of Resilience",
+	classes : ["paladin"],
+	source : ["DG:NPSS", 2],
+	level : 5,
+	school : "Evoc",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "All friendly crea in range; 7d4 temp hp, adv. on death saves, and resist. to Blud., Pier., and Slash. dmg",
+	descriptionFull : "Raw celestial energy emanates from you in an aura with a 30-foot radius, building the spirits and bodies of those within it. Until the spell ends, the aura moves with you, centered on you. Each nonhostile creature in the aura (including you), gains 7d4 temporary hit points, advantage on death saving throws and resistance to bludgeoning, piercing, and slashing damage."
+};
+
+//Spells from Arcane Warrior Spells:
+
+SpellsList["purifying strike"] = {
+	name : "Purifying Strike",
+	classes : ["paladin", "ranger"],
+	source : ["AWS", 5],
+	level : 1,
+	school : "Evoc",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Conc, 1 min",
+	save : "Wis",
+	description : "Next weapon hit +1d6 Radiant dmg, adv. vs. saves from target for duration, undead save or restrained",
+	descriptionFull : "The next time you hit a creature with a weapon attack during this spell’s duration, your weapon glows with purifying light, and the attack deals an extra 1d6 radiant damage to the target. For the duration of the spell, creatures who make saving throws against ongoing negative effects originating from the target have advantage on those saving throws." + "\n   " + "Additionally, if the target is a fiend or an undead, it must make a Wisdom saving throw. On a failed save, it is restrained until the end of its next turn."
+};
+
+SpellsList["explosive strength"] = {
+	name : "Explosive Strength",
+	classes : ["paladin", "ranger"],
+	source : ["AWS", 4],
+	level : 3,
+	school : "Trans",
+	time : "1 a",
+	range : "20 ft",
+	components : "V,S,M",
+	compMaterial : "Droplet of Sweat",
+	duration : "Instantaneous",
+	save : "Str",
+	description : "Creas in range; 8d6 Force dmg and pushed 20 ft, save halves or also knocked prone",
+	descriptionFull : "With a roar, your display of sheer strength blows away nearby creatures. Creatures other than you within a 20-foot-radius sphere emanating from yourself must make a Strength saving throw. On a failed saving throw, a creature takes 8d6 force damage, and is pushed 20 feet and knocked prone. On a success, a creature takes half as much damage, is pushed only 10 feet, and is not knocked prone."
+};
+
+SpellsList["herculean force"] = {
+	name : "Herculean Force",
+	classes : ["paladin", "ranger"],
+	source : ["AWS", 4],
+	level : 3,
+	school : "Trans",
+	time : "1 a",
+	range : "Self",
+	components : "V,S,M",
+	compMaterial : "Droplet of Sweat",
+	duration : "Conc, 1 min",
+	description : "You count as +1+1/SL larger size for carry weight, can move and throw objects of lower size",
+	descriptionFull : "Your body surges with superhuman might. For the duration of this spell, you count as Large-sized when determining how much weight you can carry. You can also lift, push, and drag Medium-sized objects, regardless of weight, and throw them up to 5 feet." + AtHigherLevels + "When you cast this spell using a spell slot of 5th level or higher, the increase both size categories mentioned by one, and the throwing distance by 5 feet, for each two slot levels above 3rd."
+};
+
+SpellsList["accursed smite"] = {
+	name : "Accursed Smite",
+	classes : ["paladin"],
+	source : ["AWS", 2],
+	level : 4,
+	school : "Necro",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Conc, 1 min",
+	save : "Wis",
+	description : "Next weapon hit +4d10+1d10/SL Fire and save or cursed for duration, you choose curse",
+	descriptionFull : "The next time you hit a creature with a weapon attack before this spell ends, your weapon erupts with hellfire, and the attack deals an extra 4d10 fire damage to the target. Additionally, that creature must succeed on a Wisdom saving throw or become cursed for the duration of the spell. When you cast this spell, choose the nature of the curse from the following options:" + "\n   " + "Choose one ability score. The target has disadvantage on ability checks and saving throws made with that ability score." + "\n   " + "The target has disadvantage on attack rolls against you." + "\n   " + "The target must make a Wisdom saving throw at the start of each of its turns. If it fails, it wastes its action that turn doing nothing." + "\n   " + "Your attacks and spells deal an extra 1d8 necrotic damage to the target." + AtHigherLevels + "If you cast this spell using a spell slot of 5th-level or higher, the duration is concentration, up to 10 minutes, and the the damage is increased by 1d10."
+};
+
+SpellsList["doffing smite"] = {
+	name : "Doffing Smite",
+	classes : ["paladin"],
+	source : ["AWS", 4],
+	level : 4,
+	school : "Trans",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Conc, 1 min",
+	save : "Con",
+	description : "Next melee weapon hit +4d6+1d6/SL Force dmg, if less than 40 hp save or drops weapon and armor",
+	descriptionFull : "The next time you hit a creature with a melee weapon attack during this spell’s duration, your weapon strikes with the force to knock their clothes off, and the attack deals an extra 4d6 force damage to the target." + "\n   " + "If this reduces the target to 40 or fewer hit points, it must make a Constitution saving throw. On a failed save, it drops what it is holding, and it is doffed of its armor, footwear, and any other beneficial apparel. These items fall to the ground unharmed in the target's space and those adjacent." + AtHigherLevels + "When you cast this spell using a spell slot of 5th-level or higher, the damage increases by 1d6 for each slot level above 4th."
+};
+
+//Spells from The Blackstaff's Book of 1000 Spells [Just the Preview] (Tested and Editted, not Retested):
+
+SpellsList["ablative armor"] = {
+	name : "Ablative Armor",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 24],
+	level : 1,
+	school : "Abjur",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M",
+	compMaterial : "A piece of shattered armor",
+	duration : "1 min",
+	description : "Suit of Armor gains 1d4+spellcasting ability modifier temp hp, gives user non-Psychic dmg resist",
+	descriptionFull : "You touch one suit of armor, which hardens with an extra layer of protection against attacks. The armor gains temporary hit points equal to 1d4 + your spellcasting ability modifier. While the armor still has these temporary hit points, its wearer has resistance to all damage except psychic damage. Each time the wearer takes damage that is not psychic damage, the same amount of damage is dealt to the armor's hit points." + "\n   " + "The spell ends early if the temporary hit points are depleted, if the armor is doffed, or if the spell is cast again on the same suit of armor. You can also dismiss the spell as an action." + AtHigherLevels + "When you cast this spell using a spell slot of 2nd level or higher, the temporary hit points increase by 5 for each slot level above 1st."
+};
+
+SpellsList["battle cry"] = {
+	name : "Battle Cry",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 50],
+	level : 1,
+	school : "Ench",
+	time : "1 bns",
+	range : "20 ft",
+	components : "V,S",
+	duration : "1 rnd",
+	description : "All friendly crea gain a +2 to atk on their next atk, add your spellcasting ability modifier to the dmg",
+	descriptionFull : "Your battle cry fills your allies with righteous fury, making their strikes more sure and deadly. Until the start of your next turn, the first time each turn that you or a creature friendly to you makes a melee attack, that creature gains a +2 bonus to the attack roll. If an attack that benefits from this bonus hits, the damage of the attack is increased by an amount equal to your spellcasting ability modifier."
+};
+
+SpellsList["battle guardian's aura"] = {
+	name : "Battle Guardian's Aura",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 51],
+	level : 1,
+	school : "Ench",
+	time : "1 bns",
+	range : "Self",
+	components : "V,M",
+	compMaterial : "A melee weapon",
+	duration : "Conc, 1 min",
+	description : "Whenever crea w/in 5 ft atks not you, you may opp. atk them, opp. atks deal +1d4 Psychic dmg",
+	descriptionFull : "You emit an aura of battle magic that helps you punish foes you avoid engaging you in combat. Until this spell ends, when a creature within 5 feet of you makes an attack that does not target you, you can use your reaction to make an attack of opportunity against the attacking creature. In addition, for the duration, any weapon attack you make as part of your reaction inflicts an additional 1d4 psychic damage on a hit." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, the psychic damage inflicted increases by 1d4 for every two slot levels above 1st."
+};
+
+SpellsList["bestow wound"] = {
+	name : "Bestow Wound",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 53],
+	level : 1,
+	school : "Necro",
+	time : "1 rea",
+	range : "Touch",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "When hit use reaction to atk attacker, add Necrotic dmg equal to half the dmg inflicted on you",
+	descriptionFull : "You use your reaction to make a melee spell attack against the creature that made the triggering attack. On a hit, the triggering attack inflicts its damage normally, but you also inflict necrotic damage equal to half the amount of damage the triggering attack inflicted on you."
+};
+
+SpellsList["action trance"] = {
+	name : "Action Trance",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 27],
+	level : 2,
+	school : "Trans",
+	time : "1 bns",
+	range : "Self",
+	components : "V,M",
+	compMaterial : "Licorice root shaving",
+	duration : "Conc, 1 min",
+	description : "Gain +2 AC, use Dash, Disengage or Use an Object as a bns, add d4 to atks and saves, then lose a turn",
+	descriptionFull : "You enter a state of pure action, untempered by thought, relying on reflex alone. Until the spell ends, you can gain the following benefits:" + "\n   " + "You can take the Dash, Disengage, or Use an Object action as a bonus action." + "\n   " + "You gain a +2 bonus to AC." + "\n   " + "Whenever you make an attack roll or saving throw before the spell ends, you can roll a d4 and add the number rolled to the attack roll or saving throw." + "\n   " + "When the spell ends, you can't move or take actions until the end of your next turn."
+};
+
+SpellsList["align weapon"] = {
+	name : "Align Weapon",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 31],
+	level : 2,
+	school : "Trans",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M",
+	compMaterial : "One weapon or fifty projectiles",
+	duration : "Conc, 1 min",
+	description : "Weapon deals +2d6 Force dmg against crea of chosen types",
+	descriptionFull : "You infuse a weapon you touch with the energies of one of the Outer Planes, energies which correspond strongly to certain ethical or moral alignments and inflict extra damage against certain types of creatures. When you cast this spell, choose one of these four planes:" + "\n   " + "Elysium (Good): Aberrations, chromatic dragons, elementals, fiends, or undead." + "\n   " + "Hades (Evil): Beasts, celestials, metallic dragons, humanoids, or plants." + "\n   " + "Limbo (Chaos): Constructs, angels, dragons, devils, or giants." + "\n   " + "Mechanus (Law): Aberrations, demons, fey, monstrosities, oozes, or undead." + "\n   " + "Until the spell ends, the weapon inflicts an additional 2d6 force damage against the types of creatures listed for the chosen plane." + "\n   " + "Your alignment may limit your choice of planar energies when you cast this spell. If you are evil-aligned, you cannot choose Elysium; etc."
+};
+
+SpellsList["aura of bravery"] = {
+	name : "Aura of Bravery",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 43],
+	level : 2,
+	school : "Trans",
+	time : "1 bns",
+	range : "15 ft",
+	components : "V",
+	duration : "Conc, 1 min",
+	description : "All friendly creas in range have adv. on saves vs. frightened",
+	descriptionFull : "This spell creates an aura centered on you that bathes all friendly creatures within a 15 foot radius in a warm and comforting light. Each affected creature has advantage on saving throws against being frightened for the duration. The aura moves with you." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher the radius increases by 10 ft for every slot level above 2nd."
+};
+
+SpellsList["balliard's rejuvenating touch"] = {
+	name : "Balliard's Rejuvenating Touch",
+	nameShort : "Rejuvenating Touch",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 48],
+	level : 2,
+	school : "Ench",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "1 crea loses 1+1/SL lvl of exhaustion",
+	descriptionFull : "Your hand glows with a soft, white light, and you touch one exhausted creature. That creature is immediately filled with energy and a new sense of purpose, as your touch removes one level of exhaustion from that creature." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, you remove an extra level of exhaustion for each spell level above 2nd."
+};
+
+SpellsList["bastion of clarity"] = {
+	name : "Bastion of Clarity",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 49],
+	level : 2,
+	school : "Abjur",
+	time : "1 rea",
+	range : "10 ft",
+	components : "V,S",
+	duration : "1 rnd",
+	description : "All friendly creatures in range have adv. on Int and Cha saves.",
+	descriptionFull : "You erect a psychic shield to protect your mind from assault, and you ward your allies as well. Choose a number of creatures within range of this spell. Until the start of your next turn, you and the creatures you choose have advantage on Intelligence and Charisma saves (including against the triggering effect)."
+};
+
+SpellsList["blade of dark whispers"] = {
+	name : "Blade of Dark Whispers",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 59],
+	level : 2,
+	school : "Necro",
+	time : "1 a",
+	range : "5 ft",
+	components : "S,M",
+	compMaterial : "A melee weapon worth at least 1 sp",
+	duration : "Instananeous",
+	description : "Atk each crea in range, on hit +2d6 + your casting ability mod Psychic dmg, and disadv. on next save",
+	descriptionFull : "As you wield your weapon in a sweeping strike, it whispers menacingly, filling your foes' mind with despair. Choose any number of creatures you can see within range. Make a melee attack against each target. On hit, a target takes addition psychic damage equal to 2d6 + your spellcasting ability modifier and suffers disadvantage on the next saving throw it makes before the end of your turn."
+};
+
+SpellsList["aegis of assault"] = {
+	name : "Aegis of Assault",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 28],
+	level : 3,
+	school : "Abjur",
+	time : "1 rea",
+	range : "30 ft",
+	components : "V,M",
+	compMaterial : "A weapon",
+	duration : "1 rnd (D)",
+	description : "If crea would hit a friendly crea in range teleport closer and atk the attacker w/ +1d4 Radiant dmg",
+	descriptionFull : "As part of the reaction used to cast this spell, you choose to do either one or both of the following:" + "\n   " + "Teleport to an unoccupied space, as long as that space is not farther away than you are now from the creature that made the triggering attack." + "\n   " + "Make one melee weapon attack against the attacker if it is within reach. If that attack hits, it deals an extra 1d4 radiant damage." + "\n   " + "After the triggering attack is resolved, you mark the creature who made that attack until the end of your next turn. While it is within 5 feet of you, a creature marked by you has disadvantage on any attack roll that doesn't target you. This spell ends early if someone else marks the creature." + AtHigherLevels + "When you cast this spell using a spell slot of 4th level or higher, the range increases to 60 feet, and the extra radiant damage inflicted with the melee weapon attack increases by 1d4 for each slot level above 3rd."
+};
+
+SpellsList["aegis of ensnarement"] = {
+	name : "Aegis of Ensnarement",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 28],
+	level : 3,
+	school : "Abjur",
+	time : "1 rea",
+	range : "30 ft",
+	components : "V,M",
+	compMaterial : "A weapon",
+	duration : "1 rnd (D)",
+	save : "Cha",
+	description : "If crea would hit a friendly crea in range save or it teleports to you, attacking you instead",
+	descriptionFull : "Your magic ensnares an attacking enemy, moving it so its attack targets you instead of your ally. The creature that made the triggering attack roll must roll a Charisma saving throw, which happens before the attack's damage is resolved. On a failed save, you teleport it to an unoccupied space within 5 feet of you. It then makes the triggering attack against you instead, comparing the same attack roll to your Armor Class to determine whether it hits or misses you." + "\n   " + "After the triggering attack is resolved, the attacking creature takes 1d4 psychic damage and you mark it until the end of your turn. While it is within 5 feet of you, a creature marked by you has disadvantage on any attack roll that doesn't target you. This spell ends early if someone else marks the creature." + AtHigherLevels + "When you cast this spell using a spell slot of 4th level or higher, the range increases to 60 feet, and the psychic damage increases by 1d4 for each slot level above 3rd."
+};
+
+SpellsList["aegis of shielding"] = {
+	name : "Aegis of Shielding",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 29],
+	level : 3,
+	school : "Abjur",
+	time : "1 rea",
+	range : "30 ft",
+	components : "V,M",
+	compMaterial : "A weapon",
+	duration : "1 rnd (D)",
+	description : "If crea would hit a friendly crea in range it gains +5 AC and resist to Blud., Pier., and Slash. dmg",
+	descriptionFull : "You protect your ally with a barrier of invisible force. Until end of the turn, the target of the triggering attack gains resistance to bludgeoning, piercing, and slashing damage and a +5 bonus to AC, including against the triggering attack." + "\n   " + "After the triggering attack is resolved, the creature that made the attack takes 1d4 force damage and you mark it until the end of your next turn. While it is within 5 feet of you, a creature marked by you has disadvantage on any attack roll that doesn't target you. This spell ends early if someone else marks the creature." + AtHigherLevels + "When you cast this spell using a spell slot of 4th level or higher, the range increases to 60 feet, and the force damage increases by 1d4 for each slot level above 3rd."
+};
+
+SpellsList["alternate reality"] = {
+	name : "Alternate Reality",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 32],
+	level : 3,
+	school : "Div",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "1 rnd",
+	description : "1 creature may reroll atk roll, save, and skill check",
+	descriptionFull : "You touch an ally, and for an instant reality alters itself to suit their desires. Until the end of your next turn, one creature you touch can choose to reroll one attack roll, one saving throw, and one skill check. Whenever the target uses the effects of this spell to reroll, it must use the second roll even if it is worse. Any rerolls not used before the start of your next turn are lost."
+};
+
+SpellsList["blade of black wind"] = {
+	name : "Blade of Black Wind",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 58],
+	level : 3,
+	school : "Necro",
+	time : "1 bns",
+	range : "Self",
+	components : "V,M",
+	compMaterial : "A melee weapon worth at least 1 sp",
+	duration : "Conc, 1 min",
+	save : "Wis",
+	description : "Your melee weapon atks deal +3d4 Psychic dmg, save to gain adv on next atk, push up to 5ft",
+	descriptionFull : "You assume a supernatural combat stance in the form of a howling wind. Until the spell ends, whenever you hit a creature with a melee weapon attack, it takes an additional 3d4 psychic damage and must make a Wisdom saving throw. On a failure, the next attack roll made against this target before the end of your next turn has advantage, and you may push the target up to 5 feet away from you."
+};
+
+SpellsList["battle hymn"] = {
+	name : "Battle Hymn",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 51],
+	level : 4,
+	school : "Ench",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "All friendly creas in range gain adv. on Wis. saving throws and are immune to being frightened",
+	descriptionFull : "This spell creates an inspiring tune that bolsters the will of all allies within range. For the duration, whenever an ally that can hear you is within 30 feet of you, it gains advantage on all Wisdom saving throws and immunity to the frightened condition."
+};
+
+SpellsList["blade of flickering shadows"] = {
+	name : "Blade of Flickering Shadows",
+	nameShort : "Blade of Shadows",
+	classes : ["paladin"],
+	source : ["TBBo1000S", 59],
+	level : 4,
+	school : "Necro",
+	time : "1 bns",
+	range : "Self",
+	components : "V,M",
+	compMaterial : "A melee weapon worth at least 1 sp",
+	duration : "Conc, 1 min",
+	description : "Gain resist. to Necrotic dmg, your melee atks deal +3d4 Necrotic damage, may enter shadow realm",
+	descriptionFull : "You temporarily become a creature of shadow, flickering in and out of a demiplane on the borders of the Shadowfell as your weapon ripples with dark magic. Until the spell ends, you have resistance to necrotic damage, you inflict 3d4 additional necrotic damage whenever you hit a creature with a melee weapon attack." + "\n   " + "For the duration, you roll a d20 at the end of each of your turns. On a roll of 11 or higher, you vanish from your current plane of existence and appear in a shadowy reflection of it. At the start of your next turn, and when the spell ends if you are in the shadowy reflection, you return to an unoccupied space of your choice that you can see within 10 feet of the space you vanished from. If no unoccupied space is available within that range, you appear in the nearest unoccupied space. You can dismiss this spell as an action." + "\n   " + "While in the shadowy reflection, you can see and hear the plane you originated from, but not more than 30 feet away." 
+};
+
+//Spells from Opus of Extrinsic Substance [Quick Preview]:
+
+SpellsList["shatter shield"] = {
+	name : "Shatter Shield",
+	classes : ["cleric", "paladin", "sorcerer", "wizard"],
+	source : ["OoES", 8],
+	level : 1, 
+	school : "Abjur",
+	time : "1 rea",
+	range : "Self",
+	components : "S,M",
+	compMaterial : "A piece of polished shale",
+	duration : "Instantaneous",
+	save : "Str",
+	description : "Take no damage from triggered attack, each crea in 5 ft saves or knocked prone",
+	descriptionFull : "A bubble of arcane force absorbs the damage of an attack before bursting into a powerful shockwave. You gain damage reduction against the triggering attack." + "\n   " + "Each Huge or smaller creature within 5 feet of you must succeed on a Strength saving throw or be knocked prone."
+};
+
+SpellsList["witness devotion"] = {
+	name : "Witness Devotion",
+	classes : ["cleric", "paladin"],
+	source : ["OoES", 8],
+	level : 1, 
+	school : "Evoc",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	save : "Cha",
+	description : "1 crea in range; save or 2d8 Radiant dmg and speed reduced to 0, spell ends if you move",
+	descriptionFull : "Infuse your holy symbol with undeniable divine energy. A creature of your choice that can see you within range must succeed on a Charisma saving throw or take your choice of 2d8 radiant or necrotic damage." + "\n   " + "A creature that takes damage from this spell has its speed reduced to 0 for the duration. The spell ends early on that creature if it can no longer see the holy symbol, if you move from the space in which the spell was cast, or cast a spell that does not target the affected creature." + "\n   " + "The target can use an action to make a Charisma check opposed by your spellcasting modifier. On a success, the spell ends on that creature."
+};
+
+SpellsList["armor of brilliance"] = {
+	name : "Armor of Brilliance",
+	classes : ["cleric", "paladin"],
+	source : ["OoES", 11],
+	level : 4, 
+	school : "Evoc",
+	time : "1 min",
+	range : "Touch",
+	components : "V,S,M\u2020",
+	compMaterial : "A piece of silk and a topaz worth 50 gp",
+	duration : "10 min",
+	save : "Con",
+	description : "1 crea gets +1 AC, on first hit each rnd attacker takes 2d4 Rad. dmg; save or blind till end of turn",
+	descriptionFull : "Target creature gains a +1 bonus to Armor Class for the duration. The first time a creature hits the target with a melee attack on a turn, the creature takes 2d4 radiant and must succeed on a Constitution saving throw or be blinded until the end of the turn."
+};
+
+SpellsList["reprising bulwark"] = {
+	name : "Reprising Bulwark",
+	classes : ["cleric", "paladin", "sorcerer", "wizard"],
+	source : ["OoES", 12],
+	level : 4, 
+	school : "Abjur",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M\u2020",
+	compMaterial : "An opal worth 20 gp",
+	duration : "Conc, 1 min",
+	description : "1 crea gets +1 AC, when hit atker takes Force dmg equal to your spellcasting modifier ability",
+	descriptionFull : "A creature you touch is shrouded with volatile arcane energy, granting the target a +1 bonus to AC for the duration." + "\n   " + "If a creature hits the target with a melee attack while the shield is active, the creature takes force dmg equal to your spellcasting ability modifier." + AtHigherLevels + "When you cast this spell using a spell slot of 8th level or higher, the bonus to AC increases to +2."
+}
+
+//Spells from Encyclopaedia Formulae Arcana A:
+
+SpellsList["alert vigil"] = {
+	name : "Alert Vigil",
+	classes : ["paladin"],
+	source : ["EFAA", 13],
+	level : 1,
+	school : "Ench",
+	time : "1 min",
+	range : "Touch",
+	components : "V,S",
+	duration : "6 hr",
+	description : "1 crea is kept awake for duration, does not suffer exhaustion, adv. on Perception checks",
+	descriptionFull : "For the duration, a willing creature you touch is kept awake and alert, allowing them to stand guard without the fear of falling asleep. The creature will not suffer any levels of exhaustion due to missed sleep. In addition, for the duration the creature has advantage on Perception checks."
+};
+
+SpellsList["abeyance"] = {
+	name : "Abeyance",
+	classes : ["paladin"],
+	source : ["EFAA", 5],
+	level : 2,
+	school : "Abjur",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M",
+	compMaterial : "A flask of holy water",
+	duration : "24 hours",
+	description : "Suppress the effect of curses on 1 crea for duration",
+	descriptionFull : "You suppress the effects of all curses on a creature for the duration. A curse can be suppressed only once by this spell, even if the second abeyance is cast by a different caster."
+};
+
+SpellsList["aura of glory"] = {
+	name : "Aura of Glory",
+	classes : ["paladin"],
+	source : ["EFAA", 33],
+	level : 2,
+	school : "Trans",
+	time : "1 a",
+	range : "10 ft",
+	components : "V",
+	duration : "1 min",
+	description : "You gain adv. on Cha checks, up to 6 creas in range w/ less than 0 hp gain 1 hp",
+	descriptionFull : "The strength of your faith spills over, enhancing your presence. For the duration, you gain advantage on Charisma-based skill checks. In addition, at the start of each of their turns, up to 6 living creatures within 10 feet of you gain 1 hit point. Such creatures must have more than 0 hit points to gain this benefit."
+};
+
+SpellsList["ayailla's radiant burst"] = {
+	name : "Ayailla's Radiant Burst",
+	nameShort : "Radiant Burst",
+	classes : ["paladin"],
+	source : ["EFAA", 35],
+	level : 2,
+	school : "Evoc",
+	time : "1 a",
+	range : "60-ft cone",
+	components : "V,S",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "Evil creas in range save or 2d8+1d8/SL Radiant dmg and blind for a rnd",
+	descriptionFull : "Uttering sacred words of power imparted by your deity, shards of heavenly light spray from your fingertips. Evil creatures in the area must make a Constitution saving throw. On a failure, a creature is blinded until the end of its next turn, and its flesh is seared as it takes 2d8 radiant damage." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for each slot level above 2nd."
+};
+
+SpellsList["affliction"] = {
+	name : "Affliction",
+	classes : ["paladin"],
+	source : ["EFAA", 10],
+	level : 3,
+	school : "Necro",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "1 crea takes 4d8 Radiant dmg; save halves or also disadv. on saves, evil creas have disadv. on save",
+	descriptionFull : "You touch a living creature and bestow upon it an affliction. The creature must make a Constitution saving throw. The creature takes 4d8 radiant damage on a failed save, or half as much damage on a successful one. In addition, on a failed save the creature has disadvantage on all saving throws until the end of your next turn. If the target creature is evil, it has disadvantage on its Constitution saving throw to avoid the spell."
+};
+
+SpellsList["angelskin"] = {
+	name : "Angelskin",
+	classes : ["paladin"],
+	source : ["EFAA", 19],
+	level : 3,
+	school : "Abjur",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "1 min",
+	description : "1 creature gains resistance to damage caused by demons and devils",
+	descriptionFull : "A creature you touch gains resistance to damage caused by demons and devils."
+};
+
+SpellsList["aspect of the deity"] = {
+	name : "Aspect of the Deity",
+	classes : ["paladin"],
+	source : ["EFAA", 29],
+	level : 4,
+	school : "Trans",
+	time : "1 bns",
+	range : "Self",
+	components : "V,S",
+	duration : "1 min",
+	description : "Gain +4 Cha (Up to 20) and resistance to Acid, Cold, Lightning, and Poison dmg",
+	descriptionFull : "Your body changes into a form which resembles your deity. You gain a +4 bonus to Charisma up to a maximum of 20. You gain resistance to acid, cold, lightning, and poison damage." + AtHigherLevels + "When you cast this spell using a spell slot of 5th level or higher, you gain the following extra powers, for each slot level above 4th." + "\n   " + "5th: Darkvision out to a range of 60 feet; resistance to bludgeoning, piercing, and slashing damage from non-magical weapons." + "\n   " + "6th: Advantage on saving throws against spells and other magical effects; +1 AC." + "\n   " + "7th: Immunity to acid, cold, lightning, and poison damage; you grow feathered wings which give you a fly speed of 60 feet." + "\n   " + "8th: Immunity to the charmed, exhausted, and frightened conditions; your weapon attacks become magical, and on a hit deal an extra 2d8 radiant damage; as an action you can touch a creature and heal 3d8 hit points." + "\n   " + "9th: You turn into a deva."
+};
+
+SpellsList["aspect of the dragon"] = {
+	name : "Aspect of the Dragon",
+	classes : ["paladin"],
+	source : ["EFAA", 29],
+	level : 5,
+	school : "Trans",
+	time : "1 bns",
+	range : "Self",
+	components : "V,S",
+	duration : "1 min",
+	description : "Gain 100 temp hp",
+	descriptionFull : "You feel a surge of divine power as your body fills with the glory of your dragon god. You gain 100 temporary hit points, which last for the duration."
+};
+
+//Spells from Encyclopaedia Formulae Arcana B:
+
+SpellsList["bless weapon"] = {
+	name : "Bless Weapon",
+	classes : ["paladin"],
+	source : ["EFAB", 38],
+	level : 1,
+	school : "Trans",
+	time : "1 bns",
+	range : "Touch",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "Weapon becomes magical, crit range 19-20 against evil foes",
+	descriptionFull : "You make a weapon you wield strike true against evil foes. The weapon becomes magical if it isn't already, though the spell doesn't grant any bonuses to hit or damage. In addition, against evil foes, the weapon scores a critical hit on a roll of 19 or 20. This effect does not apply to any weapon that already has a magical effect related to critical hits."
+};
+
+SpellsList["blessed aim"] = {
+	name : "Blessed Aim",
+	classes : ["paladin"],
+	source : ["EFAB", 38],
+	level : 1,
+	school : "Div",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "Up to 6 creas in range gain advantage on ranged attack rolls",
+	descriptionFull : "You bolster your allies' aim with an exhortation, granting up to 6 creatures you choose within the area advantage on ranged attack rolls."
+};
+
+SpellsList["blood bond"] = {
+	name : "Blood Bond",
+	classes : ["paladin"],
+	source : ["EFAB", 42],
+	level : 1,
+	school : "Necro",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M",
+	compMaterial : "A length of red silk ribbon",
+	duration : "10 min",
+	save : "Wis",
+	description : "Link the health of two creatures, dmg is split between them, unwilling makes save to resist",
+	descriptionFull : "As part of casting the spell, you touch two creatures, linking their health. Any damage one creature takes is split evenly between the two. An unwilling creature can make a Wisdom saving throw to avoid its effects."
+};
+
+SpellsList["battle favor"] = {
+	name : "Battle Favor",
+	classes : ["paladin"],
+	source : ["EFAB", 14],
+	level : 2,
+	school : "Evoc",
+	time : "1 rea",
+	range : "Self",
+	components : "V",
+	duration : "Instantaneous",
+	description : "When you crit, heal 2d8+1d8/SL + your spellcasting ability modifier",
+	descriptionFull : "When you make a critical hit you may cast this spell. You regain a number of hit points equal to 2d8 + spellcasting ability modifier." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, the amount of healing increases by 1d8 for each slot level above 2nd."
+};
+
+SpellsList["benediction"] = {
+	name : "Benediction",
+	classes : ["paladin"],
+	source : ["EFAB", 19],
+	level : 2,
+	school : "Ench",
+	time : "1 rea",
+	range : "20 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "After ally hit ally gains 1d8+1d8/SL hp, may use reaction to atk attacker",
+	descriptionFull : "You restore 1d8 hit points to the ally and they may use their reaction to make a weapon attack against the creature that damaged them, if possible." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, you restore an additional 1d8 hit points to your ally for each slot level above 2nd. If you used a 5th level spell slot or higher, the ally has advantage on their next attack."
+};
+
+SpellsList["bloodied retribution"] = {
+	name : "Bloodied Retribution",
+	classes : ["paladin"],
+	source : ["EFAB", 46],
+	level : 2,
+	school : "Evoc",
+	time : "1 rea",
+	range : "Self",
+	components : "V",
+	duration : "Instantaneous",
+	description : "After you are hit, atk attacker, if less than half hp gain hp equal to your spellcasting modifier/SL",
+	descriptionFull : "You can make a melee weapon attack against the creature which triggered the spell. If you possess fewer than half your hit points, you recover hit points equal to your spellcasting ability modifier (minimum 1)." + AtHigherLevels + "When you cast this spell using a spell slot of the 3rd level or higher, you recover additional hit points equal to your spellcasting ability modifier for each slot level above 2nd."
+};
+
+SpellsList["bolstering strike"] = {
+	name : "Bolstering Strike",
+	classes : ["paladin"],
+	source : ["EFAB", 51],
+	level : 2,
+	school : "Trans",
+	time : "1 rea",
+	range : "Self",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "Gain temporary hp equal to 3 times your spellcasting ability modifier",
+	descriptionFull : "You gain temporary hit points equal to 3 times your spellcasting ability modifier (minimum 3)."
+};
+
+SpellsList["beacon of doom"] = {
+	name : "Beacon of Doom",
+	classes : ["paladin"],
+	source : ["EFAB", 16],
+	level : 3,
+	school : "Ench",
+	time : "1 a",
+	range : "30 ft",
+	components : "V",
+	duration : "1 hr",
+	save : "Wis",
+	description : "1 crea save or -4 AC until they take dmg",
+	descriptionFull : "A creature within range must succeed on a Wisdom saving throw, or it gains a -4 penalty to AC until the next time it takes damage from an attack. After they take damage from an attack, the spell ends."
+};
+
+SpellsList["blade of blood"] = {
+	name : "Blade of Blood",
+	classes : ["paladin"],
+	source : ["EFAB", 34],
+	level : 1,
+	school : "Necro",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "Make attack w/ +1d6 Necrotic damage, may do +2d6 Necrotic dmg by taking 5 Necrotic dmg",
+	descriptionFull : "You infuse a weapon with baleful energy, sacrificing some of your own life force to end the life of another. As part of casting the spell, make a melee attack against the creature. On a hit, you deal an extra 1d6 necrotic damage. In addition, you can voluntarily take 5 points of necrotic damage to deal an extra 2d6 necrotic damage, for a total of 3d6 necrotic damage. The spell ends after you make a successful attack."
+};
+
+SpellsList["bladebane"] = {
+	name : "Bladebane",
+	classes : ["paladin"],
+	source : ["EFAB", 34],
+	level : 3,
+	school : "Trans",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S,M\u0192",
+	compMaterial : "A drop of blood and ruby dust worth 500 gp",
+	duration : "10 min",
+	description : "Choose crea type, slash. weap. ignores nonmagical resist., creas of type are vulnerable to weap.",
+	descriptionFull : "You touch a single slashing weapon and make it more deadly for a short period of time. Choose a creature type. The weapon becomes a magical weapon for the purposes of overcoming resistances, and creatures of that type are vulnerable to damage from the weapon on which bladebane was cast."
+};
+
+SpellsList["blaze of light"] = {
+	name : "Blaze of Light",
+	classes : ["paladin"],
+	source : ["EFAB", 37],
+	level : 3,
+	school : "Evoc",
+	time : "1 a",
+	range : "60-ft cone",
+	components : "V,S",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "All crea in range; save or blinded for 1 min",
+	descriptionFull : "A cone of bright light shines forth from just above your head. All creatures within the cone that can see must make a Constitution saving throw. On a failure, a creature is blinded for 1 minute."
+};
+
+SpellsList["blessed sight"] = {
+	name : "Blessed Sight",
+	classes : ["paladin"],
+	source : ["EFAB", 39],
+	level : 3,
+	school : "Div",
+	time : "1 a",
+	range : "Self",
+	components : "V,S",
+	duration : "1 min",
+	description : "You are able to see all evil auras within 120 ft, location and strength",
+	descriptionFull : "Your eyes glow with white light which allows you to see evil auras within 120 feet of you. You know the location and strength of all evil auras within your sight. An aura's strength depends on the type and CR of an evil creature."
+};
+
+SpellsList["blessing of bahamut"] = {
+	name : "Blessing of Bahamut",
+	classes : ["paladin"],
+	source : ["EFAB", 39],
+	level : 3,
+	school : "Abjur",
+	time : "1 a",
+	range : "Self",
+	components : "V,S",
+	duration : "1 min",
+	description : "Gain adv. vs. spell saves",
+	descriptionFull : "You hear a faint, distant dragon's roar, and your skin takes on a sheen of transparent platinum scales. For the duration, you have advantage on saving throws against spells and other magical effects."
+};
+
+SpellsList["bands of sirellyn"] = {
+	name : "Bands of Sirellyn",
+	classes : ["paladin"],
+	source : ["EFAB", 11],
+	level : 4,
+	school : "Conj",
+	time : "1 a",
+	range : "100 ft",
+	components : "V,S,M",
+	compMaterial : "Three miniature interlocked bands of silver",
+	duration : "Conc, 10 min",
+	save : "Dex",
+	description : "1 crea Huge or smaller; save or restrained for duration",
+	descriptionFull : "You conjure a number of shining metal bands which encircle and capture a creature." + "\n   " + "The targetted creature must make a Dexterity saving throw or be restrained for the duration. A creature, including the one restrained, can use an action to make a Strength check to break the bands. On a success, the effect ends, and the restrained creature is freed. If the check fails, any further attempts made by that creature automatically fail." + AtHigherLevels + "When you cast this spell using a spell slot of 5th level or higher, the target has disadvantage on both the saving throw and the escape roll."
+};
+
+SpellsList["barrier reaver"] = {
+	name : "Barrier Reaver",
+	classes : ["paladin"],
+	source : ["EFAB", 13],
+	level : 4,
+	school : "Trans",
+	time : "1 a",
+	range : "100 ft",
+	components : "V,S,M",
+	compMaterial : "A small metal key",
+	duration : "Conc, 1 min",
+	description : "Create an opening in a magical barrier, auto thru 4th lvl spell or lower, DC for higher lvl spells",
+	descriptionFull : "You force an opening in one magical barrier within range, including spells such as antimagic field, prismatic wall, wall of fire, wall of stone, and so on. You automatically open a hole in any barrier created through a spell of 4th level or lower. For a barrier created with a higher-level spell, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, a hole appears. For the duration, you and other creatures may move through the hole, cast spells through it, attack through it, and so on." + "\n   " + "At the end of the duration, the hole closes, inflicting 4d6 force damage on any creature still in the hole. The creature falls prone in an empty space on either side of the barrier (50% chance of either)."
+};
+
+SpellsList["blackened soul"] = {
+	name : "Blackened Soul",
+	classes : ["paladin"],
+	source : ["EFAB", 30],
+	level : 4,
+	school : "Ench",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "1 crea gains dmg resist. and adv on atk rolls, you gain a level of exhaustion",
+	descriptionFull : "Choose a creature within range. Whenever that creature takes damage, they have resistance to that damage, that ally has advantage on attack rolls, and you gain a level of exhaustion."
+};
+
+SpellsList["bleed"] = {
+	name : "Bleed",
+	classes : ["paladin"],
+	source : ["EFAB", 38],
+	level : 4,
+	school : "Necro",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	save : "Con",
+	description : "1 creature; save or vurnerable to piercing and slashing damage",
+	descriptionFull : "Your magic thins the blood of a creature, causing it to spill with unnatural ease. Choose a living creature you can see within range. That creature must make a Constitution saving throw. On a failure, for the duration, the target gains vulnerability to piercing and slashing damage."
+};
+
+SpellsList["blessing of the chalice"] = {
+	name : "Blessing of the Chalice",
+	classes : ["paladin"],
+	source : ["EFAB", 39],
+	level : 4,
+	school : "Evoc",
+	time : "1 bns",
+	range : "Self",
+	components : "V",
+	duration : "Instantaneous",
+	save : "Wis",
+	description : "Next weapon hit +2d8 Radiant dmg; save or disadv on atks, ability checks, and saves for 1 rnd",
+	descriptionFull : "The next time you hit a creature with a weapon attack, the attack deals an extra 2d8 radiant damage and the target must succeed on a Wisdom saving throw or it has disadvantage on all atacks, ability checks, and saving throws until the end of its next turn."
+};
+
+SpellsList["blessing of the righteous"] = {
+	name : "Blessing of the Righteous",
+	classes : ["paladin"],
+	source : ["EFAB", 40],
+	level : 4,
+	school : "Evoc",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "You and up to 6 creas in range deal +1d6 Radiant dmg for the duration",
+	descriptionFull : "Your blessing causes a sudden burst of warm, radiant light to envelop you and your allies. Choose up to 6 creatures in the area. For the duration, the weapon attacks you and the creatures you chose make deal an extra 1d6 radiant damage."
+};
+
+SpellsList["break the wall"] = {
+	name : "Break the Wall",
+	classes : ["paladin"],
+	source : ["EFAB", 57],
+	level : 4,
+	school : "Ench",
+	time : "1 a",
+	range : "25 ft",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	save : "Cha",
+	description : "1 crea in range; -5 AC, disadv on saves, makes Cha saves at end of its turn to end w/out disadv",
+	descriptionFull : "Choose a creature within range. The target creature has disadvantage on all saving throws and their AC is lowered by 5. At the end of each of its turns the creature can make a Charisma saving throw, ending the effect on a success. The saving throw to end this effect does not have disadvantage."
+};
+
+SpellsList["battletide"] = {
+	name : "Battletide",
+	classes : ["paladin"],
+	source : ["EFAB", 15],
+	level : 5,
+	school : "Trans",
+	time : "1 a",
+	range : "30 ft",
+	components : "V,S, M",
+	compMaterial : "A piece of human hair as long as your hand",
+	duration : "Conc, 1 min",
+	description : "Choose 1 crea, while crea is in range gain combat benefits",
+	descriptionFull : "You turn the tide of battle. Choose a creature you can see within range. As long as that creature remains alive and within range, you gain the following benefits:" + "\n   " + "You gain advantage on attack rolls and saving throws." + "\n   " + "You gain a +1 bonus to your AC." + "\n   " + "Your movement increases by 30 feet, to a maximum of twice your normal movement." + "When taking the Attack action, you may make one extra melee attack. If you choose not to make the extra attack using the Attack action, you may cast any 0-level or 1st level spell for which you have a spell slot avaible." + "\n   " + "When the affected creature is freed from the spell's effects, the spell ends."
+};
+
+SpellsList["bolts of warding"] = {
+	name : "Bolts of Warding",
+	classes : ["paladin"],
+	source : ["EFAB", 52],
+	level : 5,
+	school : "Abjur",
+	time : "1 bns",
+	range : "20 ft",
+	components : "V,S,M",
+	compMaterial : "A small toy shield",
+	duration : "Conc, 1 min",
+	save : "Dex",
+	description : "Choose 6 crea, creas who end a turn in 5 ft of chosen creas takes 4d8 Lightning dmg, save halves",
+	descriptionFull : "You hold your weapon aloft, causing it to glow and crackle with thunder and lightning. Choose up to 6 creatures in the area. A creature which ends its turn within 5 feet of one of the creatures you chose must make a Dexterity saving throw, taking 4d8 lightning damage on a failed save, or half as much damage on a successful one." + "\n   " + "In addition, if you successfully fit a creature with your weapon, the spell ends immediately and the target takes 1d8 damage for each round the spell was active."
+};
+
+SpellsList["brand of judgement"] = {
+	name : "Brand of Judgement",
+	classes : ["paladin"],
+	source : ["EFAB", 57],
+	level : 5,
+	school : "Evoc",
+	time : "1 bns",
+	range : "Self",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	save : "Wis",
+	description : "Next melee weapon hit +3d8 Radiant dmg, target takes 10 Radiant dmg after attacking, save negates",
+	descriptionFull : "The next time you hit with a melee weapon attack before this spell ends, your attack deals an extra 3d8 radiant damage. In addition, if the target makes an attack during its turn, at the end of its turn it must make a successful Wisdom saving throw or it takes 10 radiant damage."
+};
+
+//Spell from Encyclopaedia Formulae Arcana D:
+
+SpellsList["dancing shadows"] = {
+	name : "Dancing Shadows",
+	classes : ["paladin"],
+	source : ["EFAD", 7],
+	level : 2,
+	school : "Abjur",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "1 crea gains +2 bonus to AC and Dexterity saves",
+	descriptionFull : "A target you touch becomes protected by shadows. Wherever the creature stands, all nearby shadows wrap themselves around them, granting +2 to AC and Dexterity saves." + AtHigherLevels + "When you cast this spell using a spell slot of 4th level or higher, the creature gains a +5 to AC and Dexterity saving throws instead."
+};
+
+SpellsList["dark grace"] = {
+	name : "Dark Grace",
+	classes : ["paladin"],
+	source : ["EFAD", 7],
+	level : 2,
+	school : "Evoc",
+	time : "1 a",
+	range : "10 ft",
+	components : "V,S",
+	duration : "1 min",
+	description : "At start of your turn up to 4 creas in range gain 5 temp hp",
+	descriptionFull : "At the start of each of your turns, up to 4 creatures you choose within the area gain 5 temporary hit points each."
+};

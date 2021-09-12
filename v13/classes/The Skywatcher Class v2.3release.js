@@ -161,7 +161,7 @@ ClassList["skywatcher"] = {
             minlevel : 2,
             description : "\n   " + "Use the \"Choose Feature\" button above to add Rallying Commands to the third page" + "\n   " + "Whenever I gain a skywatcher level, I can replace a command I know with another",
             additional : levels.map( function(n) {
-                return n < 2 ? "" : (n < 6 ? "3" : "4") + "known"
+                return n < 2 ? "" : (n < 6 ? "3" : "4") + " known"
             }),
             extraname : "Rallying Command",
             extrachoices : ["Rally Attack", "Rally Defense", "Rally Fear (prerequisite: draco knight 6)", "Rally Luck", "Rally Magic (prerequisite: dark flier 6)", "Rally Movement", "Rally Resistance", "Rally Speed", "Rally Wind (prerequisite: falco knight 6)"],

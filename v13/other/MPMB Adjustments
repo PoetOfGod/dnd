@@ -1,0 +1,319 @@
+/* GawainO-Script start */
+//This code was made (2017-04-24) for sheet v12.96
+//
+//Personal Update Log
+// 12.991 - Updated Weapon Descriptions with Crit Range and Crit Effects
+// 12.992 - updated Class Sub-Names to match new format
+// 12.993 - fixed subclass typos.
+//
+
+//This code was updated (2021-07-23) for sheet v13.04
+//Updates were written by PoetOfGod
+
+//Added an iFileName and RequiredSheetVersion for ease of testing
+var iFileName = "MPMB Adjustments.js";
+RequiredSheetVersion(13);
+
+//The function for editing the sheet's functions
+//When the base code of the sheet is updated, it is necessary that the EditFunction is referencing text that still exists within the function at the right location to properly enact any adjustments
+function EditFunction(fnName, fnEdits) {
+	if (!tDoc[fnName]) return;
+	fnString = tDoc[fnName].toString();
+	if (!fnString.match("function " + fnName)) return; //function already patched
+	fnString = fnString.replace("function " + fnName, fnName + " = function");
+	fnEdits.forEach( function(aFn) {
+		fnString = fnString.replace(aFn[0], aFn[1]);
+	});
+	eval(fnString);
+};
+
+//New Experience Chart
+ExperiencePointsList = ["", 1250, 2500, 5000, 10000, 20000, 40000, 70000, 110000, 175000, 250000, 400000, 600000, 750000, 1000000, 1250000, 1600000, 1900000, 2250000, 300000, 1000000000];
+
+//Weapon description additions
+WeaponsList["club"].description += "";
+WeaponsList["dagger"].description += " (crit range 19)";
+WeaponsList["greatclub"].description += " (crit range 19)";
+WeaponsList["handaxe"].description += "; 1d4 slash thrown";
+WeaponsList["javelin"].description += "";
+WeaponsList["light hammer"].description += "";
+WeaponsList["mace"].description += "";
+WeaponsList["quarterstaff"].description += " (crit range 19) [20 if double]";
+WeaponsList["sickle"].description += " (crit range 19)";
+WeaponsList["spear"].description += " (crit range 19 2hd)";
+WeaponsList["unarmed strike"].description += "";
+WeaponsList["light crossbow"].description += "";
+WeaponsList["dart"].description += "";
+WeaponsList["shortbow"].description += " (crit range 19)";
+WeaponsList["sling"].description += "";
+WeaponsList["battleaxe"].description += " (crit range 19 [2h]); crit x2 dmg";
+WeaponsList["flail"].description += "";
+WeaponsList["glaive"].description += " (crit x2 dmg)";
+WeaponsList["greataxe"].description += " (crit range 19; crit x2 dmg)";
+WeaponsList["greatsword"].description += " (crit range 19; crit x2 dmg)";
+WeaponsList["halberd"].description += " (crit range 19; crit x2 dmg)";
+WeaponsList["lance"].description += " (crit x2 dmg)";
+WeaponsList["longsword"].description += " (crit range 19 [18 2hd])";
+WeaponsList["maul"].description += " (crit x2 dmg)";
+WeaponsList["morningstar"].description += " (crit x2 dmg)";
+WeaponsList["pike"].description += " (crit range 19)";
+WeaponsList["rapier"].description += " (crit range 19)";
+WeaponsList["scimitar"].description += " (crit range 19)";
+WeaponsList["shortsword"].description += "";
+WeaponsList["trident"].description += " (crit x2 dmg)";
+WeaponsList["war pick"].description += " (crit range 19)";
+WeaponsList["warhammer"].description += " (crit range 19 [18 2hd])";
+WeaponsList["whip"].description += " ; reach 15; Disarm/Trap; Nonlethal";
+WeaponsList["blowgun"].description += "";
+WeaponsList["hand crossbow"].description += "";
+WeaponsList["heavy crossbow"].description += " (crit range 19)";
+WeaponsList["longbow"].description += " (crit range 19; crit x2 dmg)";
+WeaponsList["net"].description += " ;restraining; trip";
+
+//New Armor List
+ArmourList["leather"].ac = 12;
+ArmourList["leather"].dex = 6;
+ArmourList["leather"].arcfail = 1;
+ArmourList["studded leather"].ac = 13;
+ArmourList["studded leather"].dex = 5;
+ArmourList["studded leather"].weight = 15;
+ArmourList["studded leather"].arcfail = 2;
+ArmourList["chain shirt"].ac = 14;
+ArmourList["chain shirt"].dex = 4;
+ArmourList["chain shirt"].stealthdis = true;
+ArmourList["chain shirt"].type = "light";
+ArmourList["chain shirt"].arcfail = 3;
+ArmourList["hide"].ac = 14;
+ArmourList["hide"].dex = 4;
+ArmourList["hide"].arcfail = 4;
+ArmourList["hide"].weight = 13;
+ArmourList["scale mail"].ac = 15;
+ArmourList["scale mail"].dex = 3;
+ArmourList["scale mail"].arcfail = 6;
+ArmourList["scale mail"].weight = 30;
+ArmourList["chain mail"].arcfail = 4;
+ArmourList["chain mail"].weight = 45;
+ArmourList["chain mail"].type = "medium";
+ArmourList["breastplate"].ac = 16;
+ArmourList["breastplate"].arcfail = 5;
+ArmourList["breastplate"].weight = 25;
+ArmourList["breastplate"].dr = 1;
+ArmourList["breastplate"].stealthdis = true;
+ArmourList["breastplate"].ac = 16;
+ArmourList["breastplate"].arcfail = 5;
+ArmourList["breastplate"].weight = 25;
+ArmourList["breastplate"].dr = 1;
+ArmourList["breastplate"].stealthdis = true;
+ArmourList["ring mail"].ac = 17;
+ArmourList["ring mail"].dex = 1;
+ArmourList["ring mail"].weight = 50;
+ArmourList["ring mail"].arcfail = 6;
+ArmourList["ring mail"].dr = 2;
+ArmourList["splint"].arcfail = 7;
+ArmourList["splint"].dr = 3;
+ArmourList["splint"].invName = "Splint mail";
+ArmourList["half plate"].type = "heavy";
+ArmourList["half plate"].ac = 18;
+ArmourList["half plate"].arcfail = 8;
+ArmourList["half plate"].dr = 4;
+ArmourList["half plate"].weight = 65;
+ArmourList["plate"].ac = 19;
+ArmourList["plate"].arcfail = 9;
+ArmourList["plate"].dr = 5;
+ArmourList["banded mail"] = { 
+	regExpSearch : /^(?=.*banded)(?=.*(armor|mail)).*$/i,
+	name : "Banded mail",
+	source : ["HB", 0],
+	type : "heavy", 
+	ac : 16, 
+	dex : 2, 
+	stealthdis : true, 
+	weight : 40,
+	arcfail : 5,
+	dr : 1
+};
+ArmourList["battle armor"] = { 
+	regExpSearch : /^(?=.*battle)(?=.*armor).*$/i,
+	name : "Battle armor",
+	source : ["HB", 0],
+	type : "light",
+	ac : 12,
+	stealthdis : false,
+	weight : 5
+};
+
+//New field calculation function for the 'AC during rest' field
+calcArmorSFDR = function() {
+	var fldVal = "";
+	var cArm = ArmourList[CurrentArmour.known];
+	if (cArm) {
+		if (cArm.arcfail) fldVal += "Arcane Fail: " + cArm.arcfail + (cArm.dr ? "\n" : "");
+		if (cArm.dr) fldVal += "DR: -" + cArm.dr + "/phys.";
+	};
+	event.value = fldVal;
+	event.target.multiline = fldVal.match(/\n/) ? true : false;
+};
+
+//set a new calculation for the Proficiency Bonus that results in two values, notated as [weapon prof B]|[spell prof B]
+EditFunction("ProfBonusDisplay", [["var lvl = newLvlForce", "if (QI) return;\r\n\tvar lvl = newLvlForce"]]); 
+
+EditFunction("ProfBonus", [["thisEvent.value = useDice || !lvl ? \"\" : thisEvent.submitName;", "thisEvent.value = useDice || !lvl ? \"0|0\" : thisEvent.submitName;"], ["thisEvent.submitName = ProfB + ProfMod;", "thisEvent.submitName = ProfBonusNew(ProfMod);"]]);
+
+ProfBonusNew = function(modifier) {
+	modifier = isNaN(modifier) ? 0 : Number(modifier);
+	var theProfB = [0, 0];
+	for (var aClass in classes.known) {
+		var classLevel = Math.min(classes.known[aClass].level, 20) - 1;
+		switch (aClass) {
+			case "barbarian" :
+			case "fighter" :
+				if (classes.known[aClass].subclass === "fighter-eldritch knight") {
+					theProfB[0] += [0, 0, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6][classLevel];
+					theProfB[1] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+				} else {
+					theProfB[0] += [1, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9][classLevel];
+				};
+				break;
+			case "cleric" :
+			case "druid" :
+				theProfB[0] += [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7][classLevel];
+				theProfB[1] += [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7][classLevel];
+				break;
+			case "monk" :
+			case "rogue" :
+				if (classes.known[aClass].subclass === "rogue-arcane trickster") {
+					theProfB[0] += [0, 0, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6][classLevel];
+					theProfB[1] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+				} else {
+					theProfB[0] += [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7][classLevel];
+					theProfB[1] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+				};
+				break;
+			case "rangerua" :
+			case "ranger" :
+			case "bard" :
+			case "paladin" :
+				theProfB[0] += [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7][classLevel];
+				theProfB[1] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+				break;
+			case "sorcerer" :
+			case "warlock" :
+			case "wizard" :
+				if (classes.known[aClass].subclass === "wizard-bladesinging") {
+					theProfB[0] += [0, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6][classLevel];
+					theProfB[1] += [1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8][classLevel];
+				} else {
+					theProfB[0] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+					theProfB[1] += [1, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9][classLevel];
+				};
+				break;
+			case "artificer" :
+				if (classes.known[aClass].subclass === "artificer-alchemist") {
+					theProfB[0] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+					theProfB[1] += [1, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9][classLevel];
+				} else if (classes.known[aClass].subclass === "artificer-artillerist") {
+					theProfB[0] += [0, 0, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6][classLevel];
+					theProfB[1] += [0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5][classLevel];
+				} else {
+					theProfB[0] += [0, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6][classLevel];
+					theProfB[1] += [1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8][classLevel];
+				};
+				break;
+		}
+	}
+	theProfB[0] += modifier;
+	theProfB[1] += modifier;
+	return theProfB.join("|");
+};
+
+//Function to emulate the original Proficiency calculation, used for saving throws, skill checks (if being used), and wild shape saving throws
+RAWProfBonus = function(useTarget) {
+    var thisEvent = useTarget && tDoc.getField(useTarget) ? tDoc.getField(useTarget) : event.target;
+	var QI = getTemplPre(thisEvent.name, "AScomp");
+    var lvl = Number(What(QI === true ? "Character Level" : QI + "Comp.Use.HD.Level"));
+    var ProfMod = QI === true ? What("Proficiency Bonus Modifier") : 0;
+    var ProfB = lvl ? ProficiencyBonusList[Math.min(lvl, ProficiencyBonusList.length) - 1] : 0;
+    return ProfB + ProfMod;
+};
+
+//Does not use the NewLevelForce attribute of the original Proficiency Bonus function, if that is called to the sheet these proficiency bonuses may become inaccurate, may need testing for edge cases
+
+//replace the proficiency bonus for the Ability Save DC with the first (weapon) proficiency bonus if the ability is set to Str, Dex, or Con; Otherwise, use the second (spell) proficiency bonus for the Ability Save DC
+EditFunction("CalcAbilityDC", [["var useSSDC = false, foundSSDC = [];", "var SpellAbi = What(\"Spell DC \" + Nmbr + \" Mod\");\r\n\tvar useSSDC = false, foundSSDC = [];"], ["How(\"Proficiency Bonus\")", "How(\"Proficiency Bonus\").split(\"|\")[(/str|dex|con/i).test(SpellAbi) ? 0 : 1]"]]);
+
+//replace the proficiency bonus for attack to hit with the first of the proficiency bonuses (or second if the attack is for a spell/cantrip)
+var theAtkCalcChange = {
+	atkCalc : ["if (fields.Proficiency) { output.prof = What('Proficiency Bonus').split('|')[isSpell ? 1 : 0]; };", ""]
+};
+
+
+if (!CurrentEvals.atkCalc || (CurrentEvals.atkCalc === -1)) {
+	addEvals(theAtkCalcChange, "", true);
+};
+
+//replace the proficiency bonus for saves with the old system of proficiency bonus
+EditFunction("CalcSave", [["What(prefix + Q + \"Proficiency Bonus\")", "RAWProfBonus(\"ProficiencyBonus\")"]]);
+
+//replace the proficiency bonus for skills with 0;
+EditFunction("CalcAllSkills", [["Number(!pr ? How(\"Proficiency Bonus\") : What(pr + \"Comp.Use.Proficiency Bonus\"))", "Number(!pr ? RAWProfBonus(\"Proficiency Bonus\") : What(pr + RAWProfBonus(\"Proficiency Bonus\")))"], ["setVals[passPercFld] = setVals[setFld] + 10", "setVals[passPercFld] = mod[theAbi] + 6"]])
+
+//make sure that the text field for skills is not redone
+EditFunction("SetRichTextFields", [["var sLoop = typePF ? AScompA : [\"\"];", "var sLoop = [\"\"];"]]);
+
+//replace the proficiency bonus for wild shapes with the old system of proficiency bonus (because it is only used for saves);
+EditFunction("ApplyWildshape", [[/What\(\"Proficiency Bonus\"\)/g, "RAWProfBonus(\"Proficiency Bonus\")"]]);
+
+//replace the proficiency bonus for the Spell Save DC and Spell attacks with the second of the proficiency bonuses
+EditFunction("CalcSpellScores", [["What(\"Proficiency Bonus\")", "What(\"Proficiency Bonus\").split(\"|\")[1]"], ["How(\"Proficiency Bonus\")", "How(\"Proficiency Bonus\").split(\"|\")[1]"]]);
+
+//change the function of the SkillsClick field
+EditFunction("MakeSkillsMenu_SkillsOptions", [["var sWho = Who(", "if (event.target && event.target.name && event.target.name === \"SkillsClick\") {MakeIconMenu_IconOptions(); return;}\r\n\tvar sWho = Who("]]);
+EditFunction("UpdateTooltips", [["AddTooltip(\"SkillsClick", "\/\/AddTooltip(\"SkillsClick"]]);
+
+//change the import function to not mess with this User Script
+EditFunction("DirectImport", [["if (ImportField(\"User Script\") || newFilesScriptFrom) {", "\/\*\r\n\t\tif (ImportField(\"User Script\") || newFilesScriptFrom) {"], ["if (ImportField(\"CurrentSources.Stringified\")) {", "\*\/\r\n\t\tif (ImportField(\"CurrentSources.Stringified\")) {"]]);
+
+/* GawainO-Script end */
+
+//set this script as the default value the next time the sheet is started so that it will remain even on a reset
+if ((/GawainO-Script/i).test(What("User Script"))) tDoc.getField("User Script").defaultValue = What("User Script").replace(/(.|\r|\n)+(\/\* GawainO-Script start \*\/(.|\r|\n)+\/\* GawainO-Script end \*\/)(.|\r|\n)+/, "$2");
+	
+//set all the fields to their right setting to be used in this new system
+
+if (tDoc.getField("User Script").defaultValue === "") {
+	//set the proficiency bonus field to auto font size
+	tDoc.getField("Proficiency Bonus").textSize = 0;
+	//change the button "SkillsClick" to be something very different
+	var SCbut = tDoc.getField("SkillsClick");
+	SCbut.fillColor = color.white;
+	SCbut.buttonFitBounds = typePF;
+	SCbut.buttonPosition = position.iconOnly;
+	SCbut.buttonAlignX = 0;
+	SCbut.buttonAlignY = 100;
+	SCbut.buttonScaleWhen = scaleWhen.tooBig;
+	SCbut.buttonScaleHow = scaleHow.proportional;
+	var SCrect = SCbut.rect;
+	if (typePF) {
+		SCrect[0] -= 17.63 //upper-left x
+		SCrect[1] += 2.4 //upper-left y
+		SCrect[2] += 13.07 //lower-right x
+		SCrect[3] -= 13.4 //lower-right y
+	} else {
+		SCrect[0] -= 11 //upper-left x
+		SCrect[1] += 8.72 //upper-left y
+		SCrect[2] += 43 //lower-right x
+		SCrect[3] -= 16.5 //lower-right y
+	}
+	SCbut.rect = SCrect;
+	SCbut.userName = "Click here to change the content of this field.\n\nThis icon will not be printed while it says \"Click here to change this icon\".\n\nIf you are using Adobe Acrobat Reader of a version older than DC, update January 2017, you can only use a PDF as input. If you are using this newer version or using Acrobat Pro or Acrobat Standard, you can use any kind of image format.";
+	ClearIcons("SkillsClick", true);
+	if (!typePF) {
+		tDoc.getField("AC during Rest").setAction("Calculate", "calcArmorSFDR();");
+		tDoc.getField("AC during Rest").readonly = true;
+	};
+	app.alert({
+		nIcon : 1,
+		cTitle : "To continue, first please save the sheet and close it",
+		cMsg : "Because of the code you just ran, the sheet needs to first be saved and initialized again. If you don't do this, the code might not be applied correctly.\n\nPlease now save this sheet and open it again before doing anything else, or the sheet won't properly remember the code you just entered."
+	});
+};

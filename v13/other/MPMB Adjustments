@@ -7,7 +7,7 @@
 // 12.993 - fixed subclass typos.
 //
 
-//This code was updated (2021-07-23) for sheet v13.04
+//This code was last updated (2021-11-29) for sheet v13.09
 //Updates were written by PoetOfGod
 //This code implements a variant proficiency system to the MPMB sheet
 //It is extremely invasive as it performs operations on the base code, be wary that it could break the sheet and require a fresh version to be downloaded

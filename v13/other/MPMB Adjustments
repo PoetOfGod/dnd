@@ -249,9 +249,9 @@ var theAtkCalcChange = {
 	atkCalc : ["if (fields.Proficiency) { output.prof = What('Proficiency Bonus').split('|')[isSpell ? 1 : 0]; };", ""]
 };
 
-
+// v13.0.9 update, addEvals now requires a type variable for priority, classes has the highest priority that was chosen for this operation
 if (!CurrentEvals.atkCalc || (CurrentEvals.atkCalc === -1)) {
-	addEvals(theAtkCalcChange, "", true);
+	addEvals(theAtkCalcChange, "", true, "classes");
 };
 
 //replace the proficiency bonus for saves with the old system of proficiency bonus

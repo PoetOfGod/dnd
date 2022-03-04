@@ -9,7 +9,7 @@
 	Subject:	Witch Class
 	Effect:		This script was a commission for Sigmarius for the Complete Witch class published by Mage Hand Press under the OGL.  
 	Remarks:	The class can be found at this link: https://store.magehandpress.com/products/complete-witch 
-				This class does not provide rules for multiclassing so they were implemented in a format similar to other classes.
+			This class does not provide rules for multiclassing so they were implemented in a format similar to other classes.
 	Sheet:		v13.1.0 and newer
 	Code by:	Thravieus Windhelm 
 	Date: 2022-02-15

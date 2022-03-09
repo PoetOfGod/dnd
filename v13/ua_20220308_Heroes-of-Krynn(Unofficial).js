@@ -4,7 +4,9 @@
     This script is a work in progress, currently it only adds the Kender race and the Lunar Magic sorcerer subclass
 
     Version : 1.0alpha
-    Date : 3/8/2022
+    Date : 03/08/2022
+    
+    This script should be removed once the official script is released to prevent conflict
 */
 var iFileName = "ua_20220308_Heroes-of-Krynn(Unofficial).js";
 RequiredSheetVersion("13.1.0");
@@ -192,4 +194,4 @@ AddSubClass("sorcerer", "lunar magic-ua", {
             action : [["bonus action", ""]]
         }
     }
-})
+});

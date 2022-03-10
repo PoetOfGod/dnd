@@ -711,4 +711,4 @@ FeatsList["initiate of high sorcery-ua"] = {
             firstCol : "oncelr"
         }]
     },
-}
+};

@@ -1,12 +1,12 @@
 /*  
-    This script was written by Thravieus Windhelm and tested on v13.1.0+220114, Printer Friendly
-    This is an unofficial script for the Unearthed Arcana: Heroes of Krynn
-    If you find any errors or bugs mention them on the discord
+    -INFORMATION-
+    Subject: Race, Subclass, Backgrounds, Feats
+    Effect:  This script add the Kender race, the Lunar Magic sorcerer subclass, and backgrounds and feats for the Dragonlance setting
+	     Content is from "Unearthed Arcana: Heroes of Krynn" article, taken from https://dnd.wizards.com/articles/unearthed-arcana/heroes-krynn
+    Code by: Thravieus Windhelm
+    Date: 3/10/2022 (sheet v13.1.0)
 
-    Version : 3.0alpha
-    Date : 3/10/2022
-
-    This script should be removed once the official script is released to prevent conflict
+    **This script should be removed once the official script is released to prevent conflict
 */
 var iFileName = "ua_20220308_Heroes-of-Krynn(Unofficial).js";
 RequiredSheetVersion("13.1.0");

@@ -218,7 +218,7 @@ BackgroundList["knight of solamnia-ua"] = {
 		"My comrades-in-arms are my family. I'll do whatever it takes to keep them safe.",
 		"The protection of innocent people comes first. All other concerns come second.",
 		"I joined the knights for the free meals, but their lessons grew on me over time.",
-		"I wish my deeds to become the stuff of legends—just like those of the knighthood's heroic founders.",
+		"I wish my deeds to become the stuff of legends-just like those of the knighthood's heroic founders.",
 		"A dishonorable act drove me to become a knight. I have acted with honor ever since."
 	],
 	extra : [
@@ -227,7 +227,7 @@ BackgroundList["knight of solamnia-ua"] = {
 		"A piece of a fallen knight's armor",
 		"A pendant featuring a crown, a rose, a sword, or combination of all three",
 		"The pommel of my mentor's sword",
-		"A meaningful favor from someone I defended—perhaps a handkerchief or glove",
+		"A meaningful favor from someone I defended-perhaps a handkerchief or glove",
 		"A brass locket with a sketch of a silver dragon inside"
 	],
 };

@@ -24,7 +24,7 @@ RaceList["kender-ua"] = {
     name : "Kender",
     source : [["UA:HoK", 2]],
     plural : "Kender",
-    size : 3,
+    size : 4,
     speed : {
         walk : { spd : 30, enc : 20}
     },

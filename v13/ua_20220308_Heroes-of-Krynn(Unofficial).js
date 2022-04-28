@@ -6,7 +6,7 @@
     Code by: Thravieus Windhelm
     Date: 4/27/2022 (sheet v13.1.0)
 
-    This script was written by Thravieus Windhelm and tested on v13.1.0+220114, Printer Friendly
+    This script was tested on v13.1.0+220114, Printer Friendly
     This is an unofficial script for the Unearthed Arcana: Heroes of Krynn
     If you find any errors or bugs mention them on the discord
     **This script should be removed once the official script is released to prevent conflict

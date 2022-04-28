@@ -1,14 +1,17 @@
 /*  
-    This script was written by Thravieus Windhelm and tested on v13.1.0+220114, Printer Friendly
+    -INFORMATION-
+    Subject: Race, Subclass, Backgrounds, Feats
+    Effect:  This script adds the Kender race and backgrounds and feats for the Dragonlance setting
+	     Content is from "Unearthed Arcana: Heroes of Krynn Revisited" article, taken from https://dnd.wizards.com/unearthed-arcana/heroes-krynn-revisited
+    Code by: Thravieus Windhelm
+    Date: 4/27/2022 (sheet v13.1.0)
+
+    This script was tested on v13.1.0+220114, Printer Friendly
     This is an unofficial script for the Unearthed Arcana: Heroes of Krynn Revisited
     If you find any errors or bugs mention them on the discord
-
-    Version : 2.0alpha
-    Date : 4/27/2022
-
-    This script should be removed once the official script is released to prevent conflict
+    **This script should be removed once the official script is released to prevent conflict
 */
-var iFileName = "ua_20220308_Heroes-of-Krynn-Revisited(Unofficial).js";
+var iFileName = "ua_20220425_Heroes-of-Krynn-Revisited(Unofficial).js";
 RequiredSheetVersion("13.1.0");
 
 SourceList["UA:RHoK"] = {

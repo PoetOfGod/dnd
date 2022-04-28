@@ -1,10 +1,10 @@
 /*  
     -INFORMATION-
     Subject: Race, Subclass, Backgrounds, Feats
-    Effect:  This script add the Kender race, the Lunar Magic sorcerer subclass, and backgrounds and feats for the Dragonlance setting
+    Effect:  This script adds the Kender race, the Lunar Magic sorcerer subclass, and backgrounds and feats for the Dragonlance setting
 	     Content is from "Unearthed Arcana: Heroes of Krynn" article, taken from https://dnd.wizards.com/articles/unearthed-arcana/heroes-krynn
     Code by: Thravieus Windhelm
-    Date: 3/10/2022 (sheet v13.1.0)
+    Date: 4/27/2022 (sheet v13.1.0)
 
     **This script should be removed once the official script is released to prevent conflict
 */
@@ -220,23 +220,14 @@ BackgroundList["knight of solamnia-ua"] = {
 		"I joined the knights for the free meals, but their lessons grew on me over time.",
 		"I wish my deeds to become the stuff of legends-just like those of the knighthood's heroic founders.",
 		"A dishonorable act drove me to become a knight. I have acted with honor ever since."
-	],
-	extra : [
-		"Knight of Somalia Trinkets",
-		"A flat silver disk I record my heroics upon",
-		"A piece of a fallen knight's armor",
-		"A pendant featuring a crown, a rose, a sword, or combination of all three",
-		"The pommel of my mentor's sword",
-		"A meaningful favor from someone I defended-perhaps a handkerchief or glove",
-		"A brass locket with a sketch of a silver dragon inside"
-	],
+	]
 };
 
 BackgroundFeatureList["squire of solamnia (ua)"] = {
     description : "I gain the Squire of Solamnia feat. In addition, the Knights of Solamnia provide me free, modest lodging and food at any of their fortresses or encampments.",
     eval : function() { AddFeat("Squire of Solamnia"); },
     removeeval : function() { RemoveFeat("Squire of Solamnia"); }
-}
+};
 
 BackgroundList["mage of high sorcery-ua"] = {
 	regExpSearch : /^(?=.*(mage|wizard|magus))(?=.*high)(?=.*sorcery).*$/i,
@@ -261,23 +252,14 @@ BackgroundList["mage of high sorcery-ua"] = {
 		"I learned magic so I'd be able to protect those I care about.",
 		"I use my magic to maintain the balance between all things.",
 		"Whether in the past, present, or future, I will be the greatest mage ever known."
-	],
-	extra : [
-		"Mage of High Sorcery Trinkets",
-		"An unopened letter from my first teacher",
-		"A broken wand made of black, red, or white wood",
-		"A scroll bearing an incomprehensible formula",
-		"A purposeless device covered in colored stones that can fold into various enigmatic shapes",
-		"A pouch or spell book emblazoned with the triple moon symbol of the Mages of High Sorcery",
-		"A lens through which I can see Krynn's invisible black moon, Nuitari"
-	],
+	]
 };
 
 BackgroundFeatureList["initiate of high sorcery (ua)"] = {
     description : "I gain the Initiate of High Sorcery feat. In addition, the Mages of High Sorcery provide you with free, modest lodging and food indefinitely at any occupied Tower of High Sorcery and for one night at the home of an organization member.",
     eval : function() { AddFeat("Initiate of High Sorcery"); },
     removeeval : function() { RemoveFeat("Initiate of High Sorcery"); }
-}
+};
 
 FeatsList["adept of the black robes-ua"] = {
 	name : "Adept of the Black Robes",
@@ -361,7 +343,7 @@ FeatsList["adept of the white robes-ua"] = {
 	name : "Adept of the White Robes",
 	source : [["UA:HoK", 5]],
 	description : "I learn one 2nd-level Abjur or Conj spell. I can cast this spell 1/LR w/out using a spell slot, and can cast it normally. Choose an ability for this spell. When a creature w/in 30 ft takes damage I can use a reaction to expend a spell slot and roll d4s equal to the spell's level and reduce the damage by that much + my SC ability mod.",
-	descriptionFull : "Your oath to use magic to make the world a better place has been recognized by the Order of the White Robes, granting you these benefits:\n" + toUni("Protective Magic.") + " You learn one 2nd-level spell of you choice. The 2nd-level spell must be from the evocation or necromancy school of magic. You can cast this feat's 2nd-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast this spell using spell slots you have of the appropriate level. The spell's spellcasting ability is the one chosen when you gain the Initiate of High Sorcery feat.\n" + toUni("Protective Ward.") + " When you or a creature you can see within 30 feet of you takes damage, you can use your reaction to expend a spell slot and weave protective magic around the target. Roll a number of d4s equal to the level of the spell slot expended and reduce the damage the target takes by the total rolled on those dice + your spellcasting ability modifier.",
+	descriptionFull : "Your oath to use magic to make the world a better place has been recognized by the Order of the White Robes, granting you these benefits:\n" + toUni("Protective Magic.") + " You learn one 2nd-level spell of you choice. The 2nd-level spell must be from the abjuration or conjuration school of magic. You can cast this feat's 2nd-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast this spell using spell slots you have of the appropriate level. The spell's spellcasting ability is the one chosen when you gain the Initiate of High Sorcery feat.\n" + toUni("Protective Ward.") + " When you or a creature you can see within 30 feet of you takes damage, you can use your reaction to expend a spell slot and weave protective magic around the target. Roll a number of d4s equal to the level of the spell slot expended and reduce the damage the target takes by the total rolled on those dice + your spellcasting ability modifier.",
 	prerequisite : "4th level, Initiate of High Sorcery feat, Any Non-Evil Alignment",
 	prereqeval : function(v) { return v.characterLevel >= 4 && CurrentFeats.known.indexOf("initiate of high sorcery-ua") !== -1 && !(/evil/i).test(What("Alignment")); },
 	spellcastingBonus : {
@@ -435,7 +417,7 @@ FeatsList["divinely favored-ua"] = {
     name : "Divinely Favored",
     source : [["UA:HoK", 5]],
     description : "I learn Thaumaturgy and one 1st-level spell based on my alignment. I can cast the 1st level spell once per long rest without a spell slot, and I can cast it normally. I choose Int, Wis, or Cha as my spellcasting ability for this. I can use a holy symbol as a spellcasting focus for any spells that use the chosen ability.",
-    descriptionFull : "A god has chosen you to carry a spark of their divine power.\n   You learn the thaumaturgy cantrip and one 1st-level spell based on the alignment of your character, as specified in the Alignment Spells table.\n   Your spellcasting ability for this feat's spells is Intelligence, Wisdom, or Charisma (choose when you select this feat).\n\n" + toUni("Alignment Spells") + "\n" + toUni("Alignment") + "   " + toUni("1st-level Spell") + "\nEvil\t     Choose one 1st level warlock or wizard spell.\nGood\t     Choose one 1st-level cleric or wizard spell.\nNeutral\t     Choose one 1st-level druid or wizard spell.\n\n   In addition, you can use a holy symbol as a spellcasting focus for any spell you cast that uses the spellcasting ability you choose when you select this feat.",
+    descriptionFull : "A god has chosen you to carry a spark of their divine power.\n   You learn the thaumaturgy cantrip and one 1st-level spell based on the alignment of your character, as specified in the Alignment Spells table.\n   You can cast the chosen 1st-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have.\n   Your spellcasting ability for this feat's spells is Intelligence, Wisdom, or Charisma (choose when you select this feat).\n\n" + toUni("Alignment Spells") + "\n" + toUni("Alignment") + "   " + toUni("1st-level Spell") + "\nEvil\t     Choose one 1st level warlock or wizard spell.\nGood\t     Choose one 1st-level cleric or wizard spell.\nNeutral\t     Choose one 1st-level druid or wizard spell.\n\n   In addition, you can use a holy symbol as a spellcasting focus for any spell you cast that uses the spellcasting ability you choose when you select this feat.",
     choices : ["Intelligence - Good", "Intelligence - Neutral", "Intelligence - Evil", "Wisdom - Good", "Wisdom - Neutral", "Wisdom - Evil", "Charisma - Good", "Charisma - Neutral", "Charisma - Evil"],
     // nine choices, one for each alignment and ability pair
     "intelligence - good" : {
@@ -713,7 +695,7 @@ FeatsList["initiate of high sorcery-ua"] = {
 
 FeatsList["knight of the crown-ua"] = {
     name : "Knight of the Crown",
-    source : [["UA:HoK"]],
+    source : [["UA:HoK", 6]],
     description : "When a creature within 30 ft makes an attack roll against another creature within 5 ft, I can use my reaction to grant advantage on the attack roll. I can do this a number of times equal to my Proficiency Bonus and regain all expended uses when I finish a long rest.",
     descriptionFull : "You are a Knight of Solamnia aligned with the Order of the Crown, a group that extols the virtues of cooperation, loyalty, and obedience. You excel in group combat and gain these benefits:\n" + toUni("Ability Score Increase.") + " Increase your Strength or Dexterity score by 1, to a maximum of 20.\n" + toUni("Tactical Teamwork.") + " When a creature you can see within 30 feet of you makes an attack roll against another creature that is within 5 feet of you, you can use your reaction to grant advantage on the attack roll. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
     prerequisite : "4th level, Squire of Solamnia feat",

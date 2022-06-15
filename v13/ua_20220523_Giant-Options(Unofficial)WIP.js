@@ -9,7 +9,7 @@
 
     This script should be removed once the official script is released to prevent conflict
 */
-var iFileName = "ua_20220523_Giant-Options(Unofficial).js";
+var iFileName = "ua_20220523_Giant-Options(Unofficial)WIP.js";
 RequiredSheetVersion("13.1.0");
 
 SourceList["UA:GO"] = {

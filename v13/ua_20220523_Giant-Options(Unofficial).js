@@ -1,10 +1,11 @@
 /*  
     This script was written by Thravieus Windhelm (PoetOfGod) and tested on v13.1.0+220114, Printer Friendly
     This is an unofficial script for the Unearthed Arcana: Giant Options
+    Currently, this script only adds the subclass options available from the Unearthed Arcana, it does not include the feat options.
     If you find any errors or bugs mention them on the discord
 
-    Version : 1.0alpha
-    Date : 4/27/2022
+    Version : 1.1beta
+    Date : 6/15/2022
 
     This script should be removed once the official script is released to prevent conflict
 */
@@ -324,4 +325,4 @@ AddSubClass("wizard", "runecrafter", {
             recovery : "long rest"
         },
     }
-})
+});

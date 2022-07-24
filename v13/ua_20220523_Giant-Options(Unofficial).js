@@ -3,8 +3,8 @@
     This is an unofficial script for the Unearthed Arcana: Giant Options
     If you find any errors or bugs mention them on the discord
 
-    Version : 1.1beta
-    Date : 6/15/2022
+    Version : 1.2beta
+    Date : 7/23/2022
 
     This script should be removed once the official script is released to prevent conflict
 */

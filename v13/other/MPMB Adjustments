@@ -12,11 +12,10 @@
 //This code implements a variant proficiency system to the MPMB sheet
 //It is extremely invasive as it performs operations on the base code, be wary that it could break the sheet and require a fresh version to be downloaded
 //When adding this code to the sheet, use the copy-paste method, DO NOT import the file, it will cause errors
-//This code
 
 //Added an iFileName and RequiredSheetVersion for ease of testing
 var iFileName = "MPMB Adjustments.js";
-RequiredSheetVersion(13.1.1);
+RequiredSheetVersion(13.1);
 
 //The function for editing the sheet's functions
 //When the base code of the sheet is updated, it is necessary that the EditFunction is referencing text that still exists within the function at the right location to properly enact any adjustments

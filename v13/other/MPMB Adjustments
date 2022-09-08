@@ -16,7 +16,7 @@
 
 //Added an iFileName and RequiredSheetVersion for ease of testing
 var iFileName = "MPMB Adjustments.js";
-RequiredSheetVersion(13.09);
+RequiredSheetVersion(13.1.1);
 
 //The function for editing the sheet's functions
 //When the base code of the sheet is updated, it is necessary that the EditFunction is referencing text that still exists within the function at the right location to properly enact any adjustments

@@ -7,15 +7,16 @@
 // 12.993 - fixed subclass typos.
 //
 
-//This code was last updated (2021-11-29) for sheet v13.09
+//This code was updated (2022-09-08) for sheet v13.1.1
 //Updates were written by PoetOfGod
 //This code implements a variant proficiency system to the MPMB sheet
 //It is extremely invasive as it performs operations on the base code, be wary that it could break the sheet and require a fresh version to be downloaded
 //When adding this code to the sheet, use the copy-paste method, DO NOT import the file, it will cause errors
+//This code
 
 //Added an iFileName and RequiredSheetVersion for ease of testing
 var iFileName = "MPMB Adjustments.js";
-RequiredSheetVersion(13);
+RequiredSheetVersion(13.09);
 
 //The function for editing the sheet's functions
 //When the base code of the sheet is updated, it is necessary that the EditFunction is referencing text that still exists within the function at the right location to properly enact any adjustments
@@ -242,14 +243,14 @@ RAWProfBonus = function(useTarget) {
 //Does not use the NewLevelForce attribute of the original Proficiency Bonus function, if that is called to the sheet these proficiency bonuses may become inaccurate, may need testing for edge cases
 
 //replace the proficiency bonus for the Ability Save DC with the first (weapon) proficiency bonus if the ability is set to Str, Dex, or Con; Otherwise, use the second (spell) proficiency bonus for the Ability Save DC
-EditFunction("CalcAbilityDC", [["var useSSDC = false, foundSSDC = [];", "var SpellAbi = What(\"Spell DC \" + Nmbr + \" Mod\");\r\n\tvar useSSDC = false, foundSSDC = [];"], ["How(\"Proficiency Bonus\")", "How(\"Proficiency Bonus\").split(\"|\")[(/str|dex|con/i).test(SpellAbi) ? 0 : 1]"]]);
+EditFunction("CalcAbilityDC", [["var useSSDC = false, useSSDCname = false, useSSDCothers = false;", "var SpellAbi = What(\"Spell DC \" + Nmbr + \" Mod\");\r\n\tvar useSSDC = false, useSSDCname = false, useSSDCothers = false;"], ["How(\"Proficiency Bonus\")", "How(\"Proficiency Bonus\").split(\"|\")[(/str|dex|con/i).test(SpellAbi) ? 0 : 1]"]]);
 
 //replace the proficiency bonus for attack to hit with the first of the proficiency bonuses (or second if the attack is for a spell/cantrip)
 var theAtkCalcChange = {
 	atkCalc : ["if (fields.Proficiency) { output.prof = What('Proficiency Bonus').split('|')[isSpell ? 1 : 0]; };", ""]
 };
 
-// v13.0.9 update, addEvals now requires a type variable for priority, classes has the highest priority that was chosen for this operation
+// v13.0.9 update, addEvals now requires a type variable for priority, classes has the highest priority so that was chosen for this operation
 if (!CurrentEvals.atkCalc || (CurrentEvals.atkCalc === -1)) {
 	addEvals(theAtkCalcChange, "", true, "classes");
 };
